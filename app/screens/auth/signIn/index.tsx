@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, Text, View } from 'react-native-ui-lib';
 import { RootStackParamList, APP_SCREEN } from '@/configs';
 import { useUserStore } from '@/hooks';
+import { translate } from '@/i18n';
 
 const SignInScreen: React.FC<StackScreenProps<RootStackParamList, APP_SCREEN.SIGN_IN>> = () => {
   const { signIn } = useUserStore();
@@ -16,8 +17,8 @@ const SignInScreen: React.FC<StackScreenProps<RootStackParamList, APP_SCREEN.SIG
   return (
     <SafeAreaView>
       <View>
-        <Text>Sign In</Text>
-        <Button fullWidth label="Sign In" onPress={onSignInPress} />
+        <Text>{translate('common.signIn')}</Text>
+        <Button fullWidth label={translate('common.signIn')} onPress={onSignInPress} />
       </View>
     </SafeAreaView>
   );
