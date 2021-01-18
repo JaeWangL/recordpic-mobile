@@ -1,10 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import isEqual from 'react-fast-compare';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button, FeatureHighlight, Text, View } from 'react-native-ui-lib';
+import { Button, ConnectionStatusBar, FeatureHighlight, Text, View } from 'react-native-ui-lib';
 import { RootStackParamList, APP_SCREEN } from '@/configs';
 import { useUserStore } from '@/hooks';
+import { translate } from '@/i18n';
 
 const ProductsScreen: React.FC<StackScreenProps<RootStackParamList, APP_SCREEN.PRODUCTS>> = () => {
   const { signOut } = useUserStore();
@@ -39,16 +39,17 @@ const ProductsScreen: React.FC<StackScreenProps<RootStackParamList, APP_SCREEN.P
   };
 
   return (
-    <SafeAreaView>
+    <View useSafeArea>
+      <ConnectionStatusBar />
       <View>
         <Text>Products</Text>
-        <Button label="Sign Out" onPress={onSignOutPress} />
+        <Button label={translate('common.signOut')} onPress={onSignOutPress} />
         <View ref={(r) => addTarget(r)}>
           <Text style={{ textAlign: 'right' }}>Feature</Text>
         </View>
       </View>
       {renderHighlighterOverlay()}
-    </SafeAreaView>
+    </View>
   );
 };
 

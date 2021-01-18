@@ -1,5 +1,6 @@
-import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import Icon from 'react-native-vector-icons/Feather';
 import { initialTabRoute, APP_SCREEN } from '@/configs';
 import SettingsScreen from '@/screens/settings';
 import ProductsNavigator from './bottomTabs/products.navigator';
@@ -24,7 +25,7 @@ const MainNavigator: React.FC = () => {
     <BottomTab.Navigator
       // screenOptions={TabBarVisibleOnRootScreenOptions}
       initialRouteName={initialTabRoute}
-      // tabBar={(props) => <HomeBottomNavigation {...props} />}
+      // tabBar={(props) => <AnimatedTabBar {...props} tabs={tabs} preset="flashy" />}
     >
       <BottomTab.Screen name={APP_SCREEN.TAB_PRODUCTS} component={ProductsNavigator} />
       <BottomTab.Screen name={APP_SCREEN.SETTINGS} component={SettingsScreen} />

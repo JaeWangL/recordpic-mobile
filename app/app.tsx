@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { Loading } from '@/components';
 import AppContainer from '@/navigation/app.navigation';
 import { persistor, store } from '@/redux';
+import { DefaultTheme, ThemeProvider } from '@/styles';
 
 enableScreens();
 
@@ -13,7 +14,9 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={<Loading />} persistor={persistor}>
-        <AppContainer />
+        <ThemeProvider theme={DefaultTheme}>
+          <AppContainer />
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );
