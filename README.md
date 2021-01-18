@@ -4,11 +4,11 @@ This project is for React Native beginner . It offers lots of basic features lik
 
 # 🌖 Features
 
-- [React Native](https://www.npmjs.com/package/react-native)\
-- [React Navigation](https://www.npmjs.com/package/@react-navigation/core)\
-- [Redux-Saga](https://www.npmjs.com/package/redux-saga)\
-- [i18n-JS](https://www.npmjs.com/package/i18n-js)\
-- [React-Native-UI-Lib](https://www.npmjs.com/package/react-native-ui-lib)\
+- [React Native](https://www.npmjs.com/package/react-native)
+- [React Navigation](https://www.npmjs.com/package/@react-navigation/core)
+- [Redux-Saga](https://www.npmjs.com/package/redux-saga)
+- [i18n-JS](https://www.npmjs.com/package/i18n-js)
+- [React-Native-UI-Lib](https://www.npmjs.com/package/react-native-ui-lib)
 
 # 🌗 How to use?
 
