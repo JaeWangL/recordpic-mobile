@@ -1,6 +1,68 @@
 {
   "common": {
-    "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "back": "Back",
+    "close": "Close",
+    "create": "Create",
+    "createAlbum": "Create new album",
+    "createMomentMsg": "New moment was created",
+    "join": "Join",
+    "no": "No",
+    "yes": "Yes"
+  },
+  "ask": {
+    "deletePhoto": "Do you want to delete this one?"
+  },
+  "error": {
+    "albumValidating": "Name must be less than 10, Description must be less than 15 characters",
+    "momentCountValidating": "Please upload at least 1 moment",
+    "momentNameValidating": "Moment name must be less than 20 characters",
+    "noPhotoValidating": "Moment must have at least 1 picture. If you want to change photo, please press change button",
+    "photoCountValidating": "Moment can have up to 5 photos",
+    "photoCharacterValidating": "Photo Name and Description must be less than 50 characters",
+    "photoValidating": "Please input photo name and description",
+    "createAlbum": "Unexpected error occured while creating new album",
+    "joinAlbum": "Unexpected error occured while joining album",
+    "playInProgress": "Signin already in progress",
+    "playNotAvailable": "Play services not available or outdated",
+    "selectTheme": "Please select album theme",
+    "server": "Server error. Please try again later",
+    "unk": "An unknown error occured"
+  },
+  "albums": {
+    "header": "Album List",
+    "createNewTitle": "Create new album",
+    "createNewSub": "Add new album",
+    "modalTitle": "Create new album",
+    "modalInivteDesc": "If you get invite code, please press\njoin button and if you want to create new one\npress create button",
+    "placeholderInviteCode": "Input invite code"
+  },
+  "createAlbum": {
+    "header": "Create Album",
+    "codeDesc": "You can check invite code after creating new album. Share code to people who want to make album together.",
+    "placeholderTitle": "Please input album name",
+    "placeholderDesc": "Please input album description",
+    "subtitleName": "Album Name",
+    "subtitleDesc": "Album Description",
+    "subtitleTheme": "Album Theme",
+    "albumName": "Name",
+    "albumDesc": "Description",
+    "albumDate": "Date"
+  },
+  "createMoment": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "placeholderTitle": "Input moment title",
+    "placeholderPhotoName": "Input title for photo",
+    "placeholderPhotoDesc": "Input your story for photo",
+    "photoChange": "  Change  ",
+    "photoDelete": "  Delete  ",
+    "addPhoto": "Add Photo"
+  },
+  "intro": {
+    "title": "Welcome!",
+    "inivteDesc": "If you have invite code input code and\npress join button. if you do not have,\ncreate new album",
+    "placeholderInviteCode": "Input invite code",
+    "join": "Join",
+    "createAlbum": "Create new album"
   }
 }

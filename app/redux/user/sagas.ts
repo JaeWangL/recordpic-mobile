@@ -1,33 +1,45 @@
-import JwtDecode from 'jwt-decode';
 import { SagaIterator } from 'redux-saga';
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { AuthTokensDto, DecodedUser, UserDto } from '@/dtos';
+import { call, take, put, takeLatest } from 'redux-saga/effects';
+import { AuthTokensDto, SignInRequest, SignInSocialRequest, SignInType } from '@/dtos';
+import { signInAsync, signInSocialAsync } from '@/services';
+import { decodeUser } from '@/utils';
+import { getAlbumsFailed, ActionTypes as AlbumActionTypes } from '../album/actions';
 import { signInFailed, signInSuccess, signOutSuccess, ActionTypes, SignInAction, SignOutAction } from './actions';
 
 export function* signIn({ payload }: SignInAction): SagaIterator {
-  const { email, password } = payload;
-  try {
-    /* eslint-disable */
-    const response: AuthTokensDto = {
-      accessToken:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTYwOTkxOTkyMiwiZXhwIjoxNjEwMDA2MzIyfQ.rKYyJbjqCgaF5tEWa8W1OA8G6X6KRyMQhoMugzKOKV4',
-      refreshToken:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTYwOTkxOTkyMiwiZXhwIjoxNjEwNTI0NzIyfQ.P2F9JsgeYTCyrSto6RUzsvcC_x6rZccppuFKSVxw6Cg',
-    };
-    /* eslint-enable */
-    const decoded: DecodedUser = JwtDecode(response.accessToken);
-    const user: UserDto = {
-      id: decoded.id,
-      email: decoded.email,
-      iat: decoded.iat,
-      exp: decoded.exp,
-      accessToken: response.accessToken,
-      refreshToken: response.refreshToken,
-    };
+  const { email, imageUrl, name, password, socialType, socialId } = payload;
 
-    yield put(signInSuccess({ user }));
+  try {
+    if (!password && name && socialType && socialId) {
+      const request: SignInSocialRequest = {
+        email,
+        name,
+        imageUrl: imageUrl !== null ? imageUrl : undefined,
+        type: SignInType.Mobile,
+        socialType,
+        socialId,
+      };
+      const res: AuthTokensDto = yield call(signInSocialAsync, request);
+      const user = decodeUser(res.accessToken, res.refreshToken);
+
+      yield put(signInSuccess({ user }));
+
+      yield take(AlbumActionTypes.GET_ALBUMS);
+    }
+    if (password && !socialType && !socialId) {
+      const request: SignInRequest = {
+        email,
+        password,
+        type: SignInType.Mobile,
+      };
+      const res: AuthTokensDto = yield call(signInAsync, request);
+      const user = decodeUser(res.accessToken, res.refreshToken);
+
+      yield put(signInSuccess({ user }));
+    }
   } catch (error) {
-    yield put(signInFailed(error));
+    yield put(getAlbumsFailed({ errorMsg: error }));
+    yield put(signInFailed({ errorMsg: error }));
   }
 }
 
@@ -36,8 +48,8 @@ function* signOut({ payload }: SignOutAction): SagaIterator {
 }
 
 function* UserSaga(): Generator {
-  yield takeEvery(ActionTypes.SIGN_IN, signIn);
-  yield takeEvery(ActionTypes.SIGN_OUT, signOut);
+  yield takeLatest(ActionTypes.SIGN_IN, signIn);
+  yield takeLatest(ActionTypes.SIGN_OUT, signOut);
 }
 
 export default UserSaga;

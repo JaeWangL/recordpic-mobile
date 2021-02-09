@@ -1,14 +1,16 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
+import MMKVStorage from 'react-native-mmkv-storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import rootReducers from './rootReducers';
 import rootSagas from './rootSagas';
 
+const MMKV = new MMKVStorage.Loader().withEncryption().initialize();
+
 const config = {
   key: 'root',
-  storage: AsyncStorage,
+  storage: MMKV,
 };
 
 const devMode = false; // __DEV__;

@@ -1,8 +1,10 @@
-import { all, fork, AllEffect, ForkEffect } from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
+import AlbumSaga from './album/sagas';
+import MomentSaga from './moment/sagas';
 import UserSaga from './user/sagas';
 
-function* rootSaga(): Generator<AllEffect<ForkEffect>, void, unknown> {
-  yield all([fork(UserSaga)]);
+function* rootSaga(): Generator {
+  yield all([AlbumSaga(), MomentSaga(), UserSaga()]);
 }
 
 export default rootSaga;

@@ -5,13 +5,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: 'transparent',
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  titleLabel: {},
-  subtitleLabel: {},
+  titleLabel: {
+    color: 'white',
+    fontFamily: 'NanumMyeongjoExtraBold',
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  titleDarkLabel: {
+    color: 'white',
+    fontFamily: 'NanumMyeongjoExtraBold',
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  subtitleLabel: {
+    color: 'white',
+  },
+  subtitleDarkLabel: {},
   leftControlContainer: {
     flexDirection: 'row',
     zIndex: 1,
@@ -19,6 +34,9 @@ const styles = StyleSheet.create({
   rightControlsContainer: {
     flexDirection: 'row',
     zIndex: 1,
+  },
+  spacing: {
+    width: 48,
   },
 });
 

@@ -1,11 +1,8 @@
-export interface AuthTokensDto {
-  accessToken: string;
-  refreshToken: string;
-}
-
 export interface DecodedUser {
   id: number;
   email: string;
+  name: string;
+  imageUrl?: string;
   iat: number;
   exp: number;
 }
@@ -13,6 +10,8 @@ export interface DecodedUser {
 export interface UserDto {
   id: number;
   email: string;
+  name: string;
+  imageUrl?: string;
   iat: number;
   exp: number;
   accessToken: string;

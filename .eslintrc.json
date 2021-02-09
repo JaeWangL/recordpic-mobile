@@ -23,16 +23,22 @@
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
     "max-len": ["error", { "code": 120 }],
+    "no-console": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["draft"] }],
     "no-shadow": "off",
     "no-use-before-define": "off",
+    "react/display-name": "off",
     "react/prop-types": "off",
-    "react/jsx-filename-extension": ["error", {
-      "extensions": [
-        ".jsx",
-        ".tsx"
-      ]
-    }],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
     "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off"
   }
 }

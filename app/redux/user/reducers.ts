@@ -1,3 +1,4 @@
+import produce from 'immer';
 import { UserDto } from '@/dtos';
 import { ActionTypes, UserAction } from './actions';
 import { SignInFailedPayload, SignInSuccessPayload } from './payloads';
@@ -12,30 +13,28 @@ export const initialState: UserState = {
   isLoading: false,
 };
 
-export const reducers = (state: UserState = initialState, action: UserAction): UserState => {
-  const { type, payload } = action;
+export const reducers = (state: UserState = initialState, action: UserAction): UserState =>
+  produce(
+    state,
+    (draft): UserState => {
+      const { type, payload } = action;
 
-  switch (type) {
-    case ActionTypes.SIGN_IN:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case ActionTypes.SIGN_IN_FAILED:
-      return {
-        ...state,
-        isLoading: false,
-        errorMsg: (payload as SignInFailedPayload).errorMsg,
-      };
-    case ActionTypes.SIGN_IN_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        user: (payload as SignInSuccessPayload).user,
-      };
-    case ActionTypes.SIGN_OUT_SUCCESS:
-      return initialState;
-    default:
-      return state;
-  }
-};
+      switch (type) {
+        case ActionTypes.SIGN_IN:
+          draft.isLoading = true;
+          return draft;
+        case ActionTypes.SIGN_IN_FAILED:
+          draft.isLoading = false;
+          draft.errorMsg = (payload as SignInFailedPayload).errorMsg;
+          return draft;
+        case ActionTypes.SIGN_IN_SUCCESS:
+          draft.isLoading = false;
+          draft.user = (payload as SignInSuccessPayload).user;
+          return draft;
+        case ActionTypes.SIGN_OUT_SUCCESS:
+          return initialState;
+        default:
+          return state;
+      }
+    },
+  );
