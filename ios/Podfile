@@ -5,6 +5,7 @@ platform :ios, '10.0'
 
 target 'RecordPic' do
   config = use_native_modules!
+  permissions_path = '../node_modules/react-native-permissions/ios'
 
   use_react_native!(:path => config["reactNativePath"])
 
@@ -21,7 +22,13 @@ target 'RecordPic' do
   post_install do |installer|
     flipper_post_install(installer)
   end
+
   pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'Permission-PhotoLibraryAddOnly', :path => "#{permissions_path}/PhotoLibraryAddOnly"
 end
 
 target 'RecordPic-tvOS' do

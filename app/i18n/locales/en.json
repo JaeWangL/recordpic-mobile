@@ -9,6 +9,9 @@
     "no": "No",
     "yes": "Yes"
   },
+  "alert": {
+    "photoSaved": "Photo was saved successfully"
+  },
   "ask": {
     "deletePhoto": "Do you want to delete this one?"
   },
@@ -19,6 +22,7 @@
     "noPhotoValidating": "Moment must have at least 1 picture. If you want to change photo, please press change button",
     "photoCountValidating": "Moment can have up to 5 photos",
     "photoCharacterValidating": "Photo Name and Description must be less than 50 characters",
+    "photoSaving": "Error occurred during saving. Please try again later",
     "photoValidating": "Please input photo name and description",
     "createAlbum": "Unexpected error occured while creating new album",
     "joinAlbum": "Unexpected error occured while joining album",
@@ -64,5 +68,15 @@
     "placeholderInviteCode": "Input invite code",
     "join": "Join",
     "createAlbum": "Create new album"
+  },
+  "moments": {
+    "title": "Moments",
+    "settings": "Settings"
+  },
+  "photoDetail": {
+    "save": "Save"
+  },
+  "photos": {
+    "cancel": "Cancel"
   }
 }

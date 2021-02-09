@@ -1,4 +1,4 @@
-import { MemberWithAlbumDto } from '@/dtos';
+import { MemberWithAlbumDto, MomentPreviewDto } from '@/dtos';
 
 export enum APP_SCREEN {
   AUTH = 'Auth',
@@ -14,6 +14,8 @@ export enum APP_SCREEN {
   MOMENTS = 'Moments',
   MOMENT_DETAIL = 'MomentDetail',
   MOMENT_EDIT = 'MomentEdit',
+  PHOTO_DETAIL = 'PhotoDetail',
+
   SETTINGS = 'Settings',
   PROFILE_SETTINGS = 'ProfileSettings',
 }
@@ -34,8 +36,15 @@ export type RootStackParamList = {
   [APP_SCREEN.MOMENTS]: {
     member: MemberWithAlbumDto;
   };
-  [APP_SCREEN.MOMENT_DETAIL]: undefined;
+  [APP_SCREEN.MOMENT_DETAIL]: {
+    member: MemberWithAlbumDto;
+    currentMoment: MomentPreviewDto;
+  };
   [APP_SCREEN.MOMENT_EDIT]: undefined;
+  [APP_SCREEN.PHOTO_DETAIL]: {
+    photoUrl: string;
+  };
+
   [APP_SCREEN.SETTINGS]: undefined;
   [APP_SCREEN.PROFILE_SETTINGS]: undefined;
 };
@@ -59,8 +68,15 @@ export type MainDrawerParamList = {
   [APP_SCREEN.MOMENTS]: {
     member: MemberWithAlbumDto;
   };
-  [APP_SCREEN.MOMENT_DETAIL]: undefined;
+  [APP_SCREEN.MOMENT_DETAIL]: {
+    member: MemberWithAlbumDto;
+    currentMoment: MomentPreviewDto;
+  };
   [APP_SCREEN.MOMENT_EDIT]: undefined;
+  [APP_SCREEN.PHOTO_DETAIL]: {
+    photoUrl: string;
+  };
+
   [APP_SCREEN.SETTINGS]: undefined;
   [APP_SCREEN.PROFILE_SETTINGS]: undefined;
 };

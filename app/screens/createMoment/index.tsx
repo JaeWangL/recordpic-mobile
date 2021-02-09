@@ -159,13 +159,17 @@ const CreateMomentScreen = (
     setPParams(newParams);
   };
 
-  const renderLeftControl = (): React.ReactElement => (
-    <TopNavigationText label={translate('createMoment.cancel')} onPress={onCancelPress} />
+  const renderLeftControl = useCallback(
+    (): React.ReactElement => <TopNavigationText label={translate('createMoment.cancel')} onPress={onCancelPress} />,
+    [],
   );
 
-  const renderRightControls = (): React.ReactElement[] => [
-    <TopNavigationText key="0" label={translate('createMoment.save')} onPress={onSaveAsync} />,
-  ];
+  const renderRightControls = useCallback(
+    (): React.ReactElement[] => [
+      <TopNavigationText key="0" label={translate('createMoment.save')} onPress={onSaveAsync} />,
+    ],
+    [],
+  );
 
   const renderListHeader = useCallback((): React.ReactElement => {
     return (
