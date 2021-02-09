@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import isEqual from 'react-fast-compare';
+import IsEqual from 'react-fast-compare';
 import { Alert } from 'react-native';
 import { Button, Text, TextField, View } from 'react-native-ui-lib';
 import { DrawerScreenProps } from '@react-navigation/drawer';
@@ -41,7 +41,7 @@ const IntroScreen: React.FC<DrawerScreenProps<RootStackParamList, APP_SCREEN.INT
       };
       const res = await createMemberAsync(req, user.user.accessToken);
       if (res) {
-        getAlbums({ userId: user.user.id, accessToken: user.user.accessToken });
+        getAlbums();
       }
     } catch (e) {
       Alert.alert('', translate('error.joinAlbum'));
@@ -89,4 +89,4 @@ const IntroScreen: React.FC<DrawerScreenProps<RootStackParamList, APP_SCREEN.INT
   );
 };
 
-export default IntroScreen;
+export default React.memo(IntroScreen, IsEqual);

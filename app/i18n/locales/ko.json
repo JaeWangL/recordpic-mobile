@@ -9,6 +9,9 @@
     "no": "아니오",
     "yes": "예"
   },
+  "alert": {
+    "photoSaved": "저장이 완료되었습니다."
+  },
   "ask": {
     "deletePhoto": "작성하신 내용도 함께 삭제됩니다. 정말로 삭제하시겠어요?"
   },
@@ -19,6 +22,7 @@
     "noPhotoValidating": "모먼트를 작성하려면 최소 1개의 사진이 등록되어야 합니다. 혹시 사진을 바꾸고 싶다면 사진교체 버튼을 클릭하세요.",
     "photoCountValidating": "모먼트는 최대 5장의 사진을 등록하실 수 있습니다.",
     "photoCharacterValidating": "사진의 제목과 이야기는 50자를 넘길 수 없습니다.",
+    "photoSaving": "저장하던 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
     "photoValidating": "사진의 제목과 이야기들을 작성해 주세요.",
     "createAlbum": "앨범을 만들던 중 오류가 발생했습니다.",
     "joinAlbum": "앨범에 참여하던 중 오류가 발생했습니다.",
@@ -64,5 +68,15 @@
     "placeholderInviteCode": "초대코드 입력",
     "join": "참여하기",
     "createAlbum": "새 앨범 만들기"
+  },
+  "moments": {
+    "title": "Moments",
+    "settings": "설정"
+  },
+  "photoDetail": {
+    "save": "저장"
+  },
+  "photos": {
+    "cancel": "취소"
   }
 }

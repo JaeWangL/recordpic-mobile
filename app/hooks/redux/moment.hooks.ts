@@ -2,36 +2,37 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/rootReducers';
 import {
-  setCurrentMoment,
-  setCurrentPhoto,
+  changeCurrentMoment,
+  changeCurrentPhoto,
   MomentAction,
   MomentState,
-  SetCurrentMomentPayload,
-  SetCurrentPhotoPayload,
+  ChangeCurrentMomentPayload,
+  ChangeCurrentPhotoPayload,
 } from '@/redux/moment';
 
 export interface MomentStore {
   moment: MomentState;
-  setCurrentMoment: (payload: SetCurrentMomentPayload) => MomentAction;
-  setCurrentPhoto: (payload: SetCurrentPhotoPayload) => MomentAction;
+  changeCurrentMoment: (payload: ChangeCurrentMomentPayload) => MomentAction;
+  changeCurrentPhoto: (payload: ChangeCurrentPhotoPayload) => MomentAction;
 }
 
 export const useMomentStore = (): MomentStore => {
   const dispatch = useDispatch();
   const moment = useSelector((state: RootState) => state.moment);
 
-  const setCurrentMomentDispatch = useCallback(
-    (payload: SetCurrentMomentPayload) => dispatch(setCurrentMoment(payload)),
+  const changeCurrentMomentDispatch = useCallback(
+    (payload: ChangeCurrentMomentPayload) => dispatch(changeCurrentMoment(payload)),
     [dispatch],
   );
 
-  const setCurrentPhotoDispatch = useCallback((payload: SetCurrentPhotoPayload) => dispatch(setCurrentPhoto(payload)), [
-    dispatch,
-  ]);
+  const changeCurrentPhotoDispatch = useCallback(
+    (payload: ChangeCurrentPhotoPayload) => dispatch(changeCurrentPhoto(payload)),
+    [dispatch],
+  );
 
   return {
     moment,
-    setCurrentMoment: setCurrentMomentDispatch,
-    setCurrentPhoto: setCurrentPhotoDispatch,
+    changeCurrentMoment: changeCurrentMomentDispatch,
+    changeCurrentPhoto: changeCurrentPhotoDispatch,
   };
 };

@@ -8,16 +8,17 @@ import { MomentPreviewDto } from '@/dtos';
 import styles from './styles';
 
 interface IMomentItemProps {
+  index: number;
   item: MomentPreviewDto;
   isLastItem: boolean;
-  handleMomentPress: (item: MomentPreviewDto) => void;
+  handleMomentPress: (index: number, item: MomentPreviewDto) => void;
 }
 
 const MomentItem: React.FC<IMomentItemProps> = (props: IMomentItemProps) => {
-  const { handleMomentPress, isLastItem, item } = props;
+  const { handleMomentPress, index, isLastItem, item } = props;
 
   const onMomentPress = (): void => {
-    handleMomentPress(item);
+    handleMomentPress(index, item);
   };
 
   return (

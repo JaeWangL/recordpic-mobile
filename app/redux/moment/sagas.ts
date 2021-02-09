@@ -4,25 +4,25 @@ import {
   setCurrentMoment,
   setCurrentPhoto,
   ActionTypes,
-  SetCurrentMomentAction,
-  SetCurrentPhotoAction,
+  ChangeCurrentMomentAction,
+  ChangeCurrentPhotoAction,
 } from './actions';
 
-export function* setCurrentMomentSaga({ payload }: SetCurrentMomentAction): SagaIterator {
+export function* changeCurrentMomentSaga({ payload }: ChangeCurrentMomentAction): SagaIterator {
   const { index } = payload;
 
   yield put(setCurrentMoment({ index }));
 }
 
-export function* setCurrentPhotoSaga({ payload }: SetCurrentPhotoAction): SagaIterator {
+export function* changeCurrentPhotoSaga({ payload }: ChangeCurrentPhotoAction): SagaIterator {
   const { index } = payload;
 
   yield put(setCurrentPhoto({ index }));
 }
 
 function* MomentSaga(): Generator {
-  yield takeLatest(ActionTypes.SET_CURRENT_MOMENT, setCurrentMomentSaga);
-  yield takeLatest(ActionTypes.SET_CURRENT_PHOTO, setCurrentPhotoSaga);
+  yield takeLatest(ActionTypes.CHANGE_CURRENT_MOMENT, changeCurrentMomentSaga);
+  yield takeLatest(ActionTypes.CHANGE_CURRENT_PHOTO, changeCurrentPhotoSaga);
 }
 
 export default MomentSaga;

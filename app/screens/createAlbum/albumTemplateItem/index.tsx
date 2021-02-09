@@ -1,5 +1,5 @@
 import React from 'react';
-import isEqual from 'react-fast-compare';
+import IsEqual from 'react-fast-compare';
 import { TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Text, View } from 'react-native-ui-lib';
@@ -38,4 +38,4 @@ const AlbumTemplateItem: React.FC<IAlbumTemplateItemProps> = (props: IAlbumTempl
   );
 };
 
-export default AlbumTemplateItem;
+export default React.memo(AlbumTemplateItem, IsEqual);

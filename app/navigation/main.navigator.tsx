@@ -9,6 +9,7 @@ import IntroScreen from '@/screens/intro';
 import MomentDetailScreen from '@/screens/momentDetail';
 import MomentsScreen from '@/screens/moments';
 import OnboardingScreen from '@/screens/onboarding';
+import PhotoDetailScreen from '@/screens/photoDetail';
 import SettingsScreen from '@/screens/settings';
 
 const Drawer = createDrawerNavigator();
@@ -31,6 +32,7 @@ const MainNavigator = (): React.ReactElement => {
       <Drawer.Screen name={APP_SCREEN.INTRO} component={IntroScreen} />
       <Drawer.Screen name={APP_SCREEN.MOMENTS} component={MomentsScreen} />
       <Drawer.Screen name={APP_SCREEN.MOMENT_DETAIL} component={MomentDetailScreen} />
+      <Drawer.Screen name={APP_SCREEN.PHOTO_DETAIL} component={PhotoDetailScreen} />
       <Drawer.Screen name={APP_SCREEN.SETTINGS} component={SettingsScreen} />
     </Drawer.Navigator>
   );

@@ -41,8 +41,8 @@ const SignInScreen: React.FC<DrawerScreenProps<AuthStackParamList, APP_SCREEN.SI
           signIn({
             email: userInfo.user.email,
             name: userInfo.user.name || userInfo.user.email,
-            // eslint-disable-next-line
             imageUrl:
+              // eslint-disable-next-line
               'https://lh5.googleusercontent.com/-zjDwE4_Stys/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnHxci6Tx9WHUE0rHnqFnKF5kvmow/s120/photo.jpg',
             socialType: 1,
             socialId: userInfo.user.id,
