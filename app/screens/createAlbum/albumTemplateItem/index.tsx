@@ -14,7 +14,7 @@ interface IAlbumTemplateItemProps {
   handleAlbumPress: (item: AlbumTemplate) => void;
 }
 
-const AlbumTemplateItem: React.FC<IAlbumTemplateItemProps> = (props: IAlbumTemplateItemProps) => {
+const AlbumTemplateItem = (props: IAlbumTemplateItemProps): React.ReactElement => {
   const { handleAlbumPress, item } = props;
 
   const onAlbumPress = (): void => {

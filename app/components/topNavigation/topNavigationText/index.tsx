@@ -8,7 +8,7 @@ export interface TopNavigationTextProps extends TextProps {
   darkBackground?: boolean;
 }
 
-const TopNavigationText: React.FC<TopNavigationTextProps> = (props) => {
+const TopNavigationText = (props: TopNavigationTextProps): React.ReactElement => {
   const { darkBackground, label, onPress, ...textProps } = props;
 
   const onTextPress = (event: GestureResponderEvent): void => {

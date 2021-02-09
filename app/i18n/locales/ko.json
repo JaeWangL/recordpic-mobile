@@ -77,6 +77,8 @@
     "save": "저장"
   },
   "photos": {
-    "cancel": "취소"
+    "cancel": "취소",
+    "deleteMoment": "모멘트 삭제하기",
+    "editMoment": "모멘트 수정하기"
   }
 }

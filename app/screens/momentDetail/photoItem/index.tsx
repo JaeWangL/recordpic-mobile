@@ -11,7 +11,7 @@ interface IPhotoItemProps {
   handlePhotoPress: (index: number, photoUrl: string) => void;
 }
 
-const PhotoItem: React.FC<IPhotoItemProps> = (props: IPhotoItemProps) => {
+const PhotoItem = (props: IPhotoItemProps): React.ReactElement => {
   const { index, item, handlePhotoPress } = props;
 
   const onPhotoPress = (): void => {

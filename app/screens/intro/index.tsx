@@ -14,7 +14,7 @@ import { createMemberAsync } from '@/services';
 import { placeholderColor } from '@/styles';
 import styles from './styles';
 
-const IntroScreen: React.FC<DrawerScreenProps<RootStackParamList, APP_SCREEN.INTRO>> = (props) => {
+const IntroScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.INTRO>): React.ReactElement => {
   const { navigation } = props;
   const { getAlbums } = useAlbumStore();
   const { user } = useUserStore();

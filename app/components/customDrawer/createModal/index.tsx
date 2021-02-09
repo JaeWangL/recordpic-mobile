@@ -14,7 +14,7 @@ interface ICreateModalProps {
   handleToggleModal: () => void;
 }
 
-const CreateModal: React.FC<ICreateModalProps> = (props) => {
+const CreateModal = (props: ICreateModalProps): React.ReactElement => {
   const { handleCreatePress, handleToggleModal } = props;
   const { getAlbums } = useAlbumStore();
   const { user } = useUserStore();

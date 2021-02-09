@@ -4,7 +4,7 @@ import isEqual from 'react-fast-compare';
 import { Text, View } from 'react-native-ui-lib';
 import { RootStackParamList, APP_SCREEN } from '@/configs';
 
-const SettingsScreen: React.FC<DrawerScreenProps<RootStackParamList, APP_SCREEN.SETTINGS>> = () => {
+const SettingsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.SETTINGS>): React.ReactElement => {
   return (
     <View>
       <Text>Settings</Text>
