@@ -1,36 +1,45 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator, DrawerContentComponentProps } from '@react-navigation/drawer';
 import React from 'react';
-import Icon from 'react-native-vector-icons/Feather';
-import { initialTabRoute, APP_SCREEN } from '@/configs';
+import { StyleSheet } from 'react-native';
+import { CustomDrawer } from '@/components';
+import { APP_SCREEN } from '@/configs';
+import CreateAlbumScreen from '@/screens/createAlbum';
+import CreateMomentScreen from '@/screens/createMoment';
+import IntroScreen from '@/screens/intro';
+import MomentDetailScreen from '@/screens/momentDetail';
+import MomentsScreen from '@/screens/moments';
+import OnboardingScreen from '@/screens/onboarding';
 import SettingsScreen from '@/screens/settings';
-import ProductsNavigator from './bottomTabs/products.navigator';
 
-const BottomTab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+const MainNavigator = (): React.ReactElement => {
+  const renderCustomDrawer = (props: DrawerContentComponentProps): React.ReactElement => {
+    const { navigation } = props;
 
-/* NOTE: Use this for making custom tabbar visibility per screen
-const ROOT_ROUTES: string[] = [];
+    return <CustomDrawer navigation={navigation} />;
+  };
 
-const isOneOfRootRoutes = (currentRoute: RouteProp<any, any>): boolean => {
-  return ROOT_ROUTES.find((route) => currentRoute.name === route) !== undefined;
-};
-
-const TabBarVisibleOnRootScreenOptions = ({ route }: any): BottomTabNavigationOptions => {
-  const currentRoute = route.state && route.state.routes[route.state.index];
-  return { tabBarVisible: currentRoute && isOneOfRootRoutes(currentRoute) };
-};
-*/
-
-const MainNavigator: React.FC = () => {
   return (
-    <BottomTab.Navigator
-      // screenOptions={TabBarVisibleOnRootScreenOptions}
-      initialRouteName={initialTabRoute}
-      // tabBar={(props) => <AnimatedTabBar {...props} tabs={tabs} preset="flashy" />}
+    <Drawer.Navigator
+      drawerContent={renderCustomDrawer}
+      drawerStyle={styles.drawer}
+      initialRouteName={APP_SCREEN.ON_BOARDING}
     >
-      <BottomTab.Screen name={APP_SCREEN.TAB_PRODUCTS} component={ProductsNavigator} />
-      <BottomTab.Screen name={APP_SCREEN.SETTINGS} component={SettingsScreen} />
-    </BottomTab.Navigator>
+      <Drawer.Screen name={APP_SCREEN.ON_BOARDING} component={OnboardingScreen} />
+      <Drawer.Screen name={APP_SCREEN.CREATE_ALBUM} component={CreateAlbumScreen} />
+      <Drawer.Screen name={APP_SCREEN.CREATE_MOMENT} component={CreateMomentScreen} />
+      <Drawer.Screen name={APP_SCREEN.INTRO} component={IntroScreen} />
+      <Drawer.Screen name={APP_SCREEN.MOMENTS} component={MomentsScreen} />
+      <Drawer.Screen name={APP_SCREEN.MOMENT_DETAIL} component={MomentDetailScreen} />
+      <Drawer.Screen name={APP_SCREEN.SETTINGS} component={SettingsScreen} />
+    </Drawer.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  drawer: {
+    width: '100%',
+  },
+});
 
 export default MainNavigator;

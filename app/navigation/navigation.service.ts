@@ -1,17 +1,27 @@
 import { createRef } from 'react';
-import { NavigationContainerRef } from '@react-navigation/native';
+import { CommonActions, NavigationContainerRef, StackActions } from '@react-navigation/native';
 import { RootStackParamList } from '@/configs';
 
+export const isReadyRef = createRef();
 export const navigationRef = createRef<NavigationContainerRef>();
 
 export const navigate = <RouteName extends keyof RootStackParamList>(
-  ...arg: undefined extends RootStackParamList[RouteName]
-    ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
-    : [RouteName, RootStackParamList[RouteName]]
+  name: RouteName,
+  params?: RootStackParamList[RouteName],
 ): void => {
-  navigationRef.current?.navigate(arg[0], arg.length > 1 ? arg[1] : undefined);
+  if (isReadyRef.current && navigationRef.current) {
+    navigationRef.current.navigate(name, params);
+  }
 };
 
 export const goBack = (): void => {
-  navigationRef.current?.goBack();
+  if (isReadyRef.current && navigationRef.current) {
+    navigationRef.current.dispatch(CommonActions.goBack());
+  }
+};
+
+export const replace = (name: string, params?: Record<string, unknown> | undefined): void => {
+  if (isReadyRef.current && navigationRef.current) {
+    navigationRef.current.dispatch(StackActions.replace(name, params));
+  }
 };

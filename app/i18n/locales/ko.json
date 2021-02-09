@@ -1,6 +1,68 @@
 {
   "common": {
-    "signIn": "로그인",
-    "signOut": "로그아웃"
+    "back": "이전",
+    "close": "닫기",
+    "create": "만들기",
+    "createAlbum": "새 앨범 만들기",
+    "createMomentMsg": "새로운 모먼트가 생성되었습니다",
+    "join": "참여하기",
+    "no": "아니오",
+    "yes": "예"
+  },
+  "ask": {
+    "deletePhoto": "작성하신 내용도 함께 삭제됩니다. 정말로 삭제하시겠어요?"
+  },
+  "error": {
+    "albumValidating": "이름은 10자, 설명은 15자 내로 작성되어야 합니다",
+    "momentCountValidating": "최소 1개의 모먼트를 업로드 해 주세요.",
+    "momentNameValidating": "모먼트의 제목은 20자를 넘길 수 없습니다.",
+    "noPhotoValidating": "모먼트를 작성하려면 최소 1개의 사진이 등록되어야 합니다. 혹시 사진을 바꾸고 싶다면 사진교체 버튼을 클릭하세요.",
+    "photoCountValidating": "모먼트는 최대 5장의 사진을 등록하실 수 있습니다.",
+    "photoCharacterValidating": "사진의 제목과 이야기는 50자를 넘길 수 없습니다.",
+    "photoValidating": "사진의 제목과 이야기들을 작성해 주세요.",
+    "createAlbum": "앨범을 만들던 중 오류가 발생했습니다.",
+    "joinAlbum": "앨범에 참여하던 중 오류가 발생했습니다.",
+    "playInProgress": "이미 로그인이 진행 중입니다",
+    "playNotAvailable": "플레이 스토어를 사용할 수 없습니다",
+    "selectTheme": "앨범 테마를 선택해 주세요.",
+    "server": "서버와 통신에 오류가 발생했습니다. 다시 시도해 주세요",
+    "unk": "알 수 없는 오류가 발생했습니다"
+  },
+  "albums": {
+    "header": "Album List",
+    "createNewTitle": "새앨범 추가",
+    "createNewSub": "Add new album",
+    "modalTitle": "새 앨범 추가",
+    "modalInivteDesc": "초대코드를 받으셨다면 아래에 입력한 뒤\n참여하기를 눌러주시고 새로운 앨범을 만들고\n싶다면 새 앨범 만들기를 클릭해주세요",
+    "placeholderInviteCode": "초대코드 입력"
+  },
+  "createAlbum": {
+    "header": "앨범 만들기",
+    "codeDesc": "앨범을 만드신 후 설정에서 초대코드를 확인할 수 있습니다. 초대코드를 함께 앨범을 만들어나가고 싶은 사람에게 공유해주세요.",
+    "placeholderTitle": "앨범의 제목을 정해주세요",
+    "placeholderDesc": "앨범의 설명을 정해주세요",
+    "subtitleName": "앨범 제목",
+    "subtitleDesc": "앨범 설명",
+    "subtitleTheme": "앨범 테마",
+    "albumName": "Name",
+    "albumDesc": "Description",
+    "albumDate": "Date"
+  },
+  "createMoment": {
+    "cancel": "취소",
+    "save": "저장",
+    "placeholderTitle": "제목을 입력하세요",
+    "placeholderPhotoName": "이 사진의 제목을 지어주세요",
+    "placeholderPhotoDesc": "이 사진에 대한 이야기를 작성해 주세요",
+    "photoChange": "  사진교체  ",
+    "photoDelete": "  사진삭제  ",
+    "addPhoto": "사진 추가하기"
+  },
+  "intro": {
+    "title": "환영합니다!",
+    "inivteDesc": "초대코드를 받아 가입하셨다면\n아래에 입력한 뒤 참여하기를 눌러주시고\n초대코드가 없다면 새 앨범을 만들어주세요",
+    "placeholderInviteCode": "초대코드 입력",
+    "join": "참여하기",
+    "createAlbum": "새 앨범 만들기"
   }
 }

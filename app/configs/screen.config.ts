@@ -1,14 +1,21 @@
+import { MemberWithAlbumDto } from '@/dtos';
+
 export enum APP_SCREEN {
   AUTH = 'Auth',
   SIGN_IN = 'SignIn',
 
   MAIN = 'Main',
-  TAB_PRODUCTS = 'TabProducts',
+  ON_BOARDING = 'Onboarding',
 
-  PRODUCTS = 'Products',
-  PRODUCT_DETAIL = 'ProductDetail',
-
+  ALBUM_SETTINGS = 'AlbumSettings',
+  CREATE_ALBUM = 'CreateAlbum',
+  CREATE_MOMENT = 'CreateMoment',
+  INTRO = 'Intro',
+  MOMENTS = 'Moments',
+  MOMENT_DETAIL = 'MomentDetail',
+  MOMENT_EDIT = 'MomentEdit',
   SETTINGS = 'Settings',
+  PROFILE_SETTINGS = 'ProfileSettings',
 }
 
 export type RootStackParamList = {
@@ -16,10 +23,44 @@ export type RootStackParamList = {
   [APP_SCREEN.SIGN_IN]: undefined;
 
   [APP_SCREEN.MAIN]: undefined;
-  [APP_SCREEN.PRODUCTS]: undefined;
-  [APP_SCREEN.PRODUCT_DETAIL]: undefined;
+  [APP_SCREEN.ON_BOARDING]: undefined;
 
+  [APP_SCREEN.ALBUM_SETTINGS]: undefined;
+  [APP_SCREEN.CREATE_ALBUM]: undefined;
+  [APP_SCREEN.CREATE_MOMENT]: {
+    member: MemberWithAlbumDto;
+  };
+  [APP_SCREEN.INTRO]: undefined;
+  [APP_SCREEN.MOMENTS]: {
+    member: MemberWithAlbumDto;
+  };
+  [APP_SCREEN.MOMENT_DETAIL]: undefined;
+  [APP_SCREEN.MOMENT_EDIT]: undefined;
   [APP_SCREEN.SETTINGS]: undefined;
+  [APP_SCREEN.PROFILE_SETTINGS]: undefined;
 };
 
-export const initialTabRoute: string = APP_SCREEN.PRODUCTS;
+export type AuthStackParamList = {
+  [APP_SCREEN.AUTH]: undefined;
+
+  [APP_SCREEN.SIGN_IN]: undefined;
+};
+
+export type MainDrawerParamList = {
+  [APP_SCREEN.MAIN]: undefined;
+  [APP_SCREEN.ON_BOARDING]: undefined;
+
+  [APP_SCREEN.ALBUM_SETTINGS]: undefined;
+  [APP_SCREEN.CREATE_ALBUM]: undefined;
+  [APP_SCREEN.CREATE_MOMENT]: {
+    member: MemberWithAlbumDto;
+  };
+  [APP_SCREEN.INTRO]: undefined;
+  [APP_SCREEN.MOMENTS]: {
+    member: MemberWithAlbumDto;
+  };
+  [APP_SCREEN.MOMENT_DETAIL]: undefined;
+  [APP_SCREEN.MOMENT_EDIT]: undefined;
+  [APP_SCREEN.SETTINGS]: undefined;
+  [APP_SCREEN.PROFILE_SETTINGS]: undefined;
+};

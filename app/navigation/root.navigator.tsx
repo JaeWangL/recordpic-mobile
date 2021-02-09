@@ -1,6 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import isEqual from 'react-fast-compare';
 import { APP_SCREEN, RootStackParamList } from '@/configs';
 import { UserDto } from '@/dtos';
 import AuthNavigator from './auth.navigator';
@@ -16,7 +15,7 @@ const RootNavigator: React.FC<IRootNavigatorProps> = (props) => {
   const { user } = props;
 
   return (
-    <RootStack.Navigator headerMode="none" screenOptions={{}}>
+    <RootStack.Navigator headerMode="none">
       {!user ? (
         <RootStack.Screen
           options={{ animationTypeForReplace: 'pop', gestureEnabled: false }}
@@ -30,4 +29,4 @@ const RootNavigator: React.FC<IRootNavigatorProps> = (props) => {
   );
 };
 
-export default React.memo(RootNavigator, isEqual);
+export default RootNavigator;

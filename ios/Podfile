@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'RNBoilerplate' do
+target 'RecordPic' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'RNBoilerplateTests' do
+  target 'RecordPicTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -21,12 +21,13 @@ target 'RNBoilerplate' do
   post_install do |installer|
     flipper_post_install(installer)
   end
+  pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
 end
 
-target 'RNBoilerplate-tvOS' do
-  # Pods for RNBoilerplate-tvOS
+target 'RecordPic-tvOS' do
+  # Pods for RecordPic-tvOS
 
-  target 'RNBoilerplate-tvOSTests' do
+  target 'RecordPic-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

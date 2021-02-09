@@ -1,8 +1,12 @@
-import { UserDto } from '@/dtos';
+import { SocialSignInType, UserDto } from '@/dtos';
 
 export interface SignInPayload {
   email: string;
-  password: string;
+  password?: string;
+  name?: string;
+  imageUrl: string | null;
+  socialType?: SocialSignInType;
+  socialId?: string;
 }
 
 export interface SignInFailedPayload {
