@@ -75,7 +75,7 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
         </View>
       </>
     );
-  }, []);
+  }, [member]);
 
   const renderItem = (info: ListRenderItemInfo<MomentPreviewDto>): React.ReactElement => (
     <MomentItem

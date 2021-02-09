@@ -41,7 +41,7 @@ const CustomDrawer: React.FC<ICustomDrawerProps> = (props) => {
   const handleAlbumPressAsync = async (index: number, item: MemberWithAlbumDto): Promise<void> => {
     if (index === album.currentIndex) {
       navigation.navigate(APP_SCREEN.MOMENTS, {
-        album: item.album,
+        member: item,
       });
     }
   };

@@ -27,7 +27,7 @@ export const usePhotosPreviewFetch = (momentId: number, user?: UserDto, skip = f
           setPhotos(res);
         }
       } catch (error) {
-        if (isAxiosError(error) && !error.response) {
+        if (isAxiosError(error) && error.response) {
           Alert.alert('', translate('error.server'));
         }
         LogUtil(error);

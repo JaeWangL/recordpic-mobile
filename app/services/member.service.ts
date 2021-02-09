@@ -16,7 +16,7 @@ export const createMemberAsync = async (
 
     return res.data;
   } catch (error) {
-    if (isAxiosError(error) && !error.response) {
+    if (isAxiosError(error) && error.response) {
       Alert.alert('', translate('error.server'));
     }
     LogUtil(error);
@@ -36,7 +36,7 @@ export const getMembersPreviewAsync = async (
 
     return res.data;
   } catch (error) {
-    if (isAxiosError(error) && !error.response) {
+    if (isAxiosError(error) && error.response) {
       Alert.alert('', translate('error.server'));
     }
     LogUtil(error);
@@ -56,7 +56,7 @@ export const getMembersWithAlbumAsync = async (
 
     return res.data;
   } catch (error) {
-    if (isAxiosError(error) && !error.response) {
+    if (isAxiosError(error) && error.response) {
       Alert.alert('', translate('error.server'));
     }
     LogUtil(error);

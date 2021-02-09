@@ -168,7 +168,7 @@ const CreateMomentScreen = (
     (): React.ReactElement[] => [
       <TopNavigationText key="0" label={translate('createMoment.save')} onPress={onSaveAsync} />,
     ],
-    [],
+    [paramsM, paramsP],
   );
 
   const renderListHeader = useCallback((): React.ReactElement => {

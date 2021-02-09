@@ -11,7 +11,7 @@ export const signInAsync = async (request: SignInRequest): Promise<AuthTokensDto
 
     return res.data;
   } catch (error) {
-    if (isAxiosError(error) && !error.response) {
+    if (isAxiosError(error) && error.response) {
       Alert.alert('', translate('error.server'));
     }
     LogUtil(error);
@@ -26,7 +26,7 @@ export const signInSocialAsync = async (request: SignInSocialRequest): Promise<A
 
     return res.data;
   } catch (error) {
-    if (isAxiosError(error) && !error.response) {
+    if (isAxiosError(error) && error.response) {
       Alert.alert('', translate('error.server'));
     }
     LogUtil(error);
