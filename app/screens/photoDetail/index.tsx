@@ -45,7 +45,7 @@ const PhotoDetailScreen = (
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [photoUrl]);
 
   const onClosePress = useCallback((): void => {
     navigation.goBack();

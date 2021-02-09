@@ -32,6 +32,8 @@ export function* getAlbumsSaga({ payload }: GetAlbumsAction): SagaIterator {
       return;
     }
 
+    /*
+
     if (res.length === 0) {
       yield put(setClearAlbum({ isReset: true }));
 
@@ -41,6 +43,8 @@ export function* getAlbumsSaga({ payload }: GetAlbumsAction): SagaIterator {
 
       navigate(APP_SCREEN.MOMENTS, { member: res[res.length - 1] });
     }
+    */
+    navigate(APP_SCREEN.INTRO);
   } catch (error) {
     yield put(getAlbumsFailed({ errorMsg: error }));
   }

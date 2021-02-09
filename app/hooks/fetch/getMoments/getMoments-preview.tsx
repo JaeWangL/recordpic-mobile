@@ -33,7 +33,7 @@ export const useMomentsPreviewFetch = (
           setMoments(res.data);
         }
       } catch (error) {
-        if (isAxiosError(error) && !error.response) {
+        if (isAxiosError(error) && error.response) {
           Alert.alert('', translate('error.server'));
         }
         LogUtil(error);

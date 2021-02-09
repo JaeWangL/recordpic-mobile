@@ -16,7 +16,7 @@ export const createAlbumAsync = async (
 
     return res.data;
   } catch (error) {
-    if (isAxiosError(error) && !error.response) {
+    if (isAxiosError(error) && error.response) {
       Alert.alert('', translate('error.server'));
     }
     LogUtil(error);

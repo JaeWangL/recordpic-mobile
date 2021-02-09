@@ -2,8 +2,8 @@ import moment from 'moment';
 import React from 'react';
 import isEqual from 'react-fast-compare';
 import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { Text, View } from 'react-native-ui-lib';
-import { ImageOverlay } from '@/components';
 import { MomentPreviewDto } from '@/dtos';
 import styles from './styles';
 
@@ -14,7 +14,7 @@ interface IMomentItemProps {
   handleMomentPress: (index: number, item: MomentPreviewDto) => void;
 }
 
-const MomentItem: React.FC<IMomentItemProps> = (props: IMomentItemProps) => {
+const MomentItem = (props: IMomentItemProps): React.ReactElement => {
   const { handleMomentPress, index, isLastItem, item } = props;
 
   const onMomentPress = (): void => {
@@ -28,9 +28,9 @@ const MomentItem: React.FC<IMomentItemProps> = (props: IMomentItemProps) => {
       onPress={onMomentPress}
       /* prettier-ignore */
     >
-      <ImageOverlay style={styles.coverImageContainer} source={{ uri: item.coverUrl }} useBlur={false}>
+      <FastImage style={styles.coverImageContainer} source={{ uri: item.coverUrl }}>
         <Text style={styles.countLabel}>{`+${item.photoCount}`}</Text>
-      </ImageOverlay>
+      </FastImage>
       <View style={styles.detailsContainer}>
         <Text style={styles.dateLabel}>{moment(item.momentDate).format('YYYY년 MM월 DD일')}</Text>
         <Text style={styles.titleLabel} numberOfLines={2}>

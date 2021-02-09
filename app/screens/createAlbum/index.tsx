@@ -131,7 +131,7 @@ const CreateAlbumScreen: React.FC<DrawerScreenProps<RootStackParamList, APP_SCRE
           activeSlideAlignment="start"
           inactiveSlideScale={0.85}
           sliderWidth={viewportWidth}
-          itemWidth={400}
+          itemWidth={250}
           data={initAlbumTemplate}
           renderItem={renderAlbumItem}
           onSnapToItem={onSnapToAlbumItem}
