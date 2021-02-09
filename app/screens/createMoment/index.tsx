@@ -1,10 +1,10 @@
-import { AndroidEvent } from '@react-native-community/datetimepicker';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import Moment from 'moment';
 import React, { useCallback, useState } from 'react';
 import IsEqual from 'react-fast-compare';
 import { Alert, FlatList, GestureResponderEvent, ListRenderItemInfo, TouchableOpacity } from 'react-native';
-import { DateTimePicker, Text, TextField, View } from 'react-native-ui-lib';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { Text, TextField, View } from 'react-native-ui-lib';
 import AddPhoto from '@/assets/icons/add-photo.svg';
 import ArrowDown from '@/assets/icons/arrow-down.svg';
 import { CustomLoading, Divider, ImageOverlay, TopNavigation, TopNavigationText } from '@/components';
@@ -136,13 +136,17 @@ const CreateMomentScreen = (
     setShowDate(!showDate);
   };
 
-  const onDateChange = (event: AndroidEvent, date?: Date): void => {
+  const onDateConfirm = (date: Date): void => {
     // NOTE: `setShowDate` must be declared before `setMParams`
     // If not, in Android, Picker will be opened twice
     setShowDate(false);
     if (date !== undefined) {
       setMParams({ ...paramsM, momentDate: date });
     }
+  };
+
+  const onDateCancel = (): void => {
+    setShowDate(false);
   };
 
   const onAddPress = (): void => {
@@ -190,7 +194,7 @@ const CreateMomentScreen = (
         />
       </View>
     );
-  }, []);
+  }, [paramsM.momentDate]);
 
   const renderListFooter = (): React.ReactElement => {
     return (
@@ -235,9 +239,7 @@ const CreateMomentScreen = (
           ListHeaderComponent={renderListHeader}
           ListFooterComponent={renderListFooter}
         />
-        {showDate && (
-          <DateTimePicker value={paramsM.momentDate} mode="date" is24Hour display="calendar" onChange={onDateChange} />
-        )}
+        <DateTimePickerModal isVisible={showDate} mode="date" onConfirm={onDateConfirm} onCancel={onDateCancel} />
       </>
     </ImageOverlay>
   );
