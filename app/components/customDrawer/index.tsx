@@ -22,7 +22,7 @@ interface ICustomDrawerProps {
 
 const keyExtractor = (item: MemberWithAlbumDto) => item.id.toString();
 
-const CustomDrawer: React.FC<ICustomDrawerProps> = (props) => {
+const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
   const { navigation } = props;
   const { height: viewportHeight } = Dimensions.get('window');
   const { album, changeCurrentAlbum } = useAlbumStore();

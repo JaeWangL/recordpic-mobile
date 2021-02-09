@@ -9,7 +9,7 @@ import { persistor, store } from '@/redux';
 
 enableScreens();
 
-const App: React.FC = () => {
+const App = (): React.ReactElement => {
   return (
     <Provider store={store}>
       <PersistGate loading={<CustomLoading />} persistor={persistor}>

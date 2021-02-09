@@ -13,3 +13,4 @@ export const dividerGrayColor = '#e5e5e5';
 export const placeholderColor = 'rgba(255, 255, 255, 0.6)';
 export const placeholderGrayColor = '#cccccc';
 export const placeholderGray200Color = '#777777';
+export const gray300Color = '#555555';

@@ -15,7 +15,9 @@ import AlbumItemTemplate from './albumTemplateItem';
 import { initAlbumTemplate, initParamsType, AlbumTemplate, CreateAlbumParamsType } from './interfaces';
 import styles from './styles';
 
-const CreateAlbumScreen: React.FC<DrawerScreenProps<RootStackParamList, APP_SCREEN.CREATE_ALBUM>> = (props) => {
+const CreateAlbumScreen = (
+  props: DrawerScreenProps<RootStackParamList, APP_SCREEN.CREATE_ALBUM>,
+): React.ReactElement => {
   const { navigation } = props;
   const { width: viewportWidth } = Dimensions.get('window');
   const { getAlbums } = useAlbumStore();

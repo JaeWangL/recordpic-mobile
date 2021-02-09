@@ -16,7 +16,7 @@ interface IAlbumItemProps {
   handleAlbumPress: (index: number, item: MemberWithAlbumDto) => void;
 }
 
-const AlbumItem: React.FC<IAlbumItemProps> = (props: IAlbumItemProps) => {
+const AlbumItem = (props: IAlbumItemProps): React.ReactElement => {
   const { handleAlbumPress, handleCreatePress, index, item } = props;
 
   const onAlbumPress = (): void => {

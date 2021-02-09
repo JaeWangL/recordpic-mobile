@@ -12,7 +12,7 @@ export interface TopNavigationProps extends ViewProps {
   darkBackground?: boolean;
 }
 
-const TopNavigation: React.FC<TopNavigationProps> = (props) => {
+const TopNavigation = (props: TopNavigationProps): React.ReactElement => {
   const { darkBackground, leftControl, rightControls, style, title, ...restProps } = props;
   const insects = useSafeAreaInsets();
 

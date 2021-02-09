@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { gray300Color } from '@/styles';
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
   modalDesc: {
     marginTop: -8,
     textAlign: 'center',
-    color: '#555555',
+    color: gray300Color,
     fontFamily: 'Noto Sans KR',
     fontSize: 15,
   },

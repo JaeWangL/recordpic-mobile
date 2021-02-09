@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { gray300Color } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 5,
     textAlign: 'center',
-    color: '#777777',
+    color: gray300Color,
     fontFamily: 'NanumMyeongjo',
     fontSize: 14,
   },
@@ -29,8 +30,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   dropdownMenu: {
-    paddingTop: 0,
-    alignSelf: 'center',
+    marginTop: 30,
+  },
+  dropdownLabel: {
+    color: '#555555',
+    fontFamily: 'Noto Sans KR',
+    fontSize: 12,
   },
   listContainer: {
     backgroundColor: 'white',

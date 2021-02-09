@@ -12,7 +12,7 @@ import { useUserStore } from '@/hooks';
 import { translate } from '@/i18n';
 import styles from './styles';
 
-const SignInScreen: React.FC<DrawerScreenProps<AuthStackParamList, APP_SCREEN.SIGN_IN>> = () => {
+const SignInScreen = (props: DrawerScreenProps<AuthStackParamList, APP_SCREEN.SIGN_IN>): React.ReactElement => {
   const { signIn, user } = useUserStore();
 
   useEffect(() => {

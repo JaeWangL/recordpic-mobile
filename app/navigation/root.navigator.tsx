@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import IsEqual from 'react-fast-compare';
 import { APP_SCREEN, RootStackParamList } from '@/configs';
 import { UserDto } from '@/dtos';
 import AuthNavigator from './auth.navigator';
@@ -11,7 +12,7 @@ interface IRootNavigatorProps {
   user?: UserDto;
 }
 
-const RootNavigator: React.FC<IRootNavigatorProps> = (props) => {
+const RootNavigator = (props: IRootNavigatorProps): React.ReactElement => {
   const { user } = props;
 
   return (
@@ -29,4 +30,8 @@ const RootNavigator: React.FC<IRootNavigatorProps> = (props) => {
   );
 };
 
-export default RootNavigator;
+RootNavigator.defaultProps = {
+  user: undefined,
+};
+
+export default React.memo(RootNavigator, IsEqual);

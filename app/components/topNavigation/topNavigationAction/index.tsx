@@ -9,7 +9,7 @@ export interface TopNavigationActionProps extends TouchableOpacityProps {
   darkBackground?: boolean;
 }
 
-const TopNavigationAction: React.FC<TopNavigationActionProps> = (props) => {
+const TopNavigationAction = (props: TopNavigationActionProps): React.ReactElement => {
   const { darkBackground, iconName, ...touchableProps } = props;
 
   /*

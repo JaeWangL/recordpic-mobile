@@ -14,7 +14,7 @@ export interface IImageOverlayProps extends ImageBackgroundProps {
 
 const DEFAULT_OVERLAY_COLOR = 'rgba(0, 0, 0, 0.15)';
 
-const ImageOverlay: React.FC<IImageOverlayProps> = (props) => {
+const ImageOverlay = (props: IImageOverlayProps): React.ReactElement => {
   const { style, children, useBlur, ...imageBackgroundProps } = props;
   const { overlayColor, ...imageBackgroundStyle } = StyleSheet.flatten(style);
 

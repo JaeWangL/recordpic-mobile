@@ -6,7 +6,7 @@ import { useUserStore } from '@/hooks';
 import RootNavigator from './root.navigator';
 import { isReadyRef, navigationRef } from './navigation.service';
 
-const AppContainer: React.FC = () => {
+const AppContainer = (): React.ReactElement => {
   const { user } = useUserStore();
 
   useEffect(() => {

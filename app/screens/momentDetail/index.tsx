@@ -3,6 +3,7 @@ import Moment from 'moment';
 import React, { useCallback, useRef } from 'react';
 import isEqual from 'react-fast-compare';
 import { ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import Icon from 'react-native-vector-icons/Feather';
 import { Text, View } from 'react-native-ui-lib';
 import { CustomLoading, TopNavigation, TopNavigationText } from '@/components';
@@ -24,6 +25,7 @@ const MomentDetailScreen = (
   const { changeCurrentPhoto, moment } = useMomentStore();
   const { user } = useUserStore();
   const { photos, isLoading } = usePhotosPreviewFetch(currentMoment.id, user.user);
+  const menuList = useRef<Menu>(null);
   const photosList = useRef<FlatList>(null);
 
   const handlePhotoPress = (index: number, photoUrl: string): void => {
@@ -35,6 +37,16 @@ const MomentDetailScreen = (
 
   const onArrowPress = useCallback((): void => {
     navigation.goBack();
+  }, []);
+
+  const onMenuPress = useCallback((): void => {
+    if (menuList.current) {
+      menuList.current.show();
+    }
+  }, []);
+
+  const renderMenuButton = useCallback(() => {
+    return <Icon style={styles.dropdownMenu} name="more-vertical" size={24} onPress={onMenuPress} />;
   }, []);
 
   const renderLeftControl = useCallback(
@@ -50,7 +62,11 @@ const MomentDetailScreen = (
           <Text style={styles.dateLabel}>{Moment(currentMoment.momentDate).format('YYYY년 MM월 DD일')}</Text>
           <Text style={styles.nameLabel}>{currentMoment.name}</Text>
         </View>
-        <Icon style={styles.dropdownMenu} name="more-vertical" size={24} />
+        <Menu style={styles.dropdownMenu} ref={menuList} button={renderMenuButton()}>
+          <MenuItem textStyle={styles.dropdownLabel}>{translate('photos.editMoment')}</MenuItem>
+          <MenuDivider />
+          <MenuItem textStyle={styles.dropdownLabel}>{translate('photos.deleteMoment')}</MenuItem>
+        </Menu>
       </View>
     );
   }, []);
@@ -75,6 +91,7 @@ const MomentDetailScreen = (
         initialNumToRender={7}
         maxToRenderPerBatch={5}
         windowSize={10}
+        /* TODO: Uncomment this
         initialScrollIndex={moment.currentPhotoIndex}
         onScrollToIndexFailed={(info) => {
           const wait = new Promise((resolve) => setTimeout(resolve, 500));
@@ -82,6 +99,7 @@ const MomentDetailScreen = (
             photosList.current?.scrollToIndex({ index: info.index, animated: false });
           });
         }}
+        */
       />
     </ImageBackground>
   );

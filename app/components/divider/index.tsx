@@ -9,10 +9,16 @@ interface IDividerProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const Divider: React.FC<IDividerProps> = (props) => {
+const Divider = (props: IDividerProps): React.ReactElement => {
   const { inset, isDarkMode, style, ...rest } = props;
 
   return <View {...rest} style={[isDarkMode ? styles.dark : styles.light, inset && styles.inset, style]} />;
+};
+
+Divider.defaultProps = {
+  inset: false,
+  isDarkMode: false,
+  style: undefined,
 };
 
 export default React.memo(Divider, isEqual);

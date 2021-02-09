@@ -77,6 +77,8 @@
     "save": "Save"
   },
   "photos": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "deleteMoment": "Delete Moment",
+    "editMoment": "Edit Moment"
   }
 }

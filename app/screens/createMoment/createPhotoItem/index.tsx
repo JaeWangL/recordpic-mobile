@@ -20,7 +20,7 @@ interface ICreatePhotoProps {
   handleDeletePhoto: (index: number) => void;
 }
 
-const CreatePhotoItem: React.FC<ICreatePhotoProps> = (props) => {
+const CreatePhotoItem = (props: ICreatePhotoProps): React.ReactElement => {
   const { handleDeletePhoto, handleParmsChange, params, user } = props;
   const [uploadPregress, setUploadProgress] = useState<number>(0);
 
@@ -155,6 +155,10 @@ const CreatePhotoItem: React.FC<ICreatePhotoProps> = (props) => {
       />
     </>
   );
+};
+
+CreatePhotoItem.defaultProps = {
+  user: undefined,
 };
 
 export default React.memo(CreatePhotoItem, IsEqual);
