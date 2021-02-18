@@ -50,7 +50,7 @@ const CreatePhotoItem = (props: ICreatePhotoProps): React.ReactElement => {
 
   const onPhotoPress = (): void => {
     const options: ImagePicker.ImageLibraryOptions = {
-      quality: 0.8,
+      quality: 1,
       mediaType: 'photo',
     };
 

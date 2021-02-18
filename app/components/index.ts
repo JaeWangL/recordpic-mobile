@@ -1,3 +1,4 @@
+export { default as AlbumTemplateItem } from './albumTemplateItem';
 export { default as CustomDrawer } from './customDrawer';
 export { default as CustomLoading } from './customLoading';
 export { default as CustomStatusBar } from './customStatusBar';

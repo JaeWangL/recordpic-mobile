@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { blackTransparent50Color } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
   },
   createDesc: {
-    color: 'rgba(255, 255, 255, 0.5)',
+    color: blackTransparent50Color,
     fontSize: 13,
     marginTop: 5,
   },

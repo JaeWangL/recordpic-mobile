@@ -5,6 +5,7 @@ export const warning = '#FFB444';
 export const danger = '#FF3A3A';
 
 export const baseBlackColor = '#111111';
+export const blackTransparent50Color = 'rgba(255, 255, 255, 0.5)';
 export const baseWhiteColor = '#ffffff';
 export const transparentChipColor = 'rgba(0, 0, 0, 0.5)';
 export const dividerDarkColor = 'rgba(0, 0, 0, 0.12)';

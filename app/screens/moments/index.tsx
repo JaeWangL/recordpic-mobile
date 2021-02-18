@@ -32,17 +32,21 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
     });
   };
 
-  const onFABPress = (): void => {
+  const onFABPress = useCallback((): void => {
     navigation.navigate(APP_SCREEN.CREATE_MOMENT, { member });
-  };
+  }, []);
 
-  const onMenuPress = (): void => {
+  const onMenuPress = useCallback((): void => {
     navigation.openDrawer();
-  };
+  }, []);
 
-  const onSettingsPress = (): void => {
-    // navigation.navigate('UpdateAlbum', { album });
-  };
+  const onProfilePress = useCallback((): void => {
+    navigation.navigate(APP_SCREEN.SETTINGS);
+  }, []);
+
+  const onSettingsPress = useCallback((): void => {
+    navigation.navigate(APP_SCREEN.UPDATE_ALBUM, { member });
+  }, []);
 
   const renderLeftControl = useCallback(
     (): React.ReactElement => <TopNavigationAction iconName="menu" onPress={onMenuPress} />,
@@ -50,7 +54,7 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
   );
 
   const renderRightControls = useCallback(
-    (): React.ReactElement[] => [<TopNavigationAction key="0" iconName="user" />],
+    (): React.ReactElement[] => [<TopNavigationAction key="0" iconName="user" onPress={onProfilePress} />],
     [],
   );
 

@@ -16,8 +16,4 @@ export interface SetCurrentAlbumPayload {
   index: number;
 }
 
-export interface SetClearAlbumPayload {
-  isReset: boolean;
-}
-
 export type Payload = GetAlbumsFailedPayload | GetAlbumsSuccessPayload | SetCurrentAlbumPayload;

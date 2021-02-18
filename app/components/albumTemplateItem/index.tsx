@@ -3,30 +3,21 @@ import IsEqual from 'react-fast-compare';
 import { TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Text, View } from 'react-native-ui-lib';
-import { Divider } from '@/components';
 import { translate } from '@/i18n';
 import { getBGThumbnail } from '@/utils';
-import { AlbumTemplate } from '../interfaces';
+import Divider from '../divider';
+import { AlbumTemplate } from './interfaces';
 import styles from './styles';
 
 interface IAlbumTemplateItemProps {
   item: AlbumTemplate;
-  handleAlbumPress: (item: AlbumTemplate) => void;
 }
 
 const AlbumTemplateItem = (props: IAlbumTemplateItemProps): React.ReactElement => {
-  const { handleAlbumPress, item } = props;
-
-  const onAlbumPress = (): void => {
-    handleAlbumPress(item);
-  };
+  const { item } = props;
 
   return (
-    <TouchableOpacity
-      style={[styles.container, { backgroundColor: item.coverColor }]}
-      activeOpacity={0.95}
-      onPress={onAlbumPress}
-    >
+    <TouchableOpacity style={[styles.container, { backgroundColor: item.coverColor }]} activeOpacity={0.95}>
       <Divider style={styles.divider} />
       <View flex>
         <Text style={styles.titleLabel}>{translate('createAlbum.albumName')}</Text>

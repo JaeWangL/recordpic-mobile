@@ -4,6 +4,7 @@ export interface AlbumPreviewDto {
   description?: string;
   coverColor: string;
   coverUrl: string;
+  inviteCode: string;
   createdDate: Date;
 }
 
