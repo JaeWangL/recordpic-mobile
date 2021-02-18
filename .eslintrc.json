@@ -25,6 +25,8 @@
     "max-len": ["error", { "code": 120 }],
     "no-console": "off",
     "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["draft"] }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-return-await": "off",
     "no-shadow": "off",
     "no-use-before-define": "off",
     "react/display-name": "off",
