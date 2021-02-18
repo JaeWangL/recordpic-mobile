@@ -26,7 +26,6 @@ const MomentItem = (props: IMomentItemProps): React.ReactElement => {
       style={isLastItem ? styles.lastItemContainer : styles.container}
       activeOpacity={0.95}
       onPress={onMomentPress}
-      /* prettier-ignore */
     >
       <FastImage style={styles.coverImageContainer} source={{ uri: item.coverUrl }}>
         <Text style={styles.countLabel}>{`+${item.photoCount}`}</Text>

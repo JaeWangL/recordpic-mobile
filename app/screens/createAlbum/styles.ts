@@ -1,11 +1,9 @@
 import { Platform, StyleSheet } from 'react-native';
+import { baseBlackColor } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#111111',
-  },
-  hedaerContainer: {
-    backgroundColor: '#111111',
+    backgroundColor: baseBlackColor,
   },
   codeContainer: {
     marginHorizontal: 24,

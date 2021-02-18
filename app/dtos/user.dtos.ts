@@ -17,3 +17,16 @@ export interface UserDto {
   accessToken: string;
   refreshToken: string;
 }
+
+export interface UserPreviewDto {
+  id: number;
+  email: string;
+  name: string;
+  imageUrl?: string;
+}
+
+export interface UpdateProfileRequest {
+  id: number;
+  name: string;
+  imageUrl?: string;
+}

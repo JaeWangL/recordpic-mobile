@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   lastItemContainer: {
     flexDirection: 'row',
-    marginHorizontal: 32,
+    marginHorizontal: 24,
     marginTop: 14,
     marginBottom: 100,
   },

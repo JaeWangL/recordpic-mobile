@@ -7,7 +7,6 @@ export enum APP_SCREEN {
   MAIN = 'Main',
   ON_BOARDING = 'Onboarding',
 
-  ALBUM_SETTINGS = 'AlbumSettings',
   CREATE_ALBUM = 'CreateAlbum',
   CREATE_MOMENT = 'CreateMoment',
   INTRO = 'Intro',
@@ -15,9 +14,10 @@ export enum APP_SCREEN {
   MOMENT_DETAIL = 'MomentDetail',
   MOMENT_EDIT = 'MomentEdit',
   PHOTO_DETAIL = 'PhotoDetail',
+  UPDATE_ALBUM = 'UpdateAlbum',
 
   SETTINGS = 'Settings',
-  PROFILE_SETTINGS = 'ProfileSettings',
+  UPDATE_PROFILE = 'UpdateProfile',
 }
 
 export type RootStackParamList = {
@@ -27,7 +27,6 @@ export type RootStackParamList = {
   [APP_SCREEN.MAIN]: undefined;
   [APP_SCREEN.ON_BOARDING]: undefined;
 
-  [APP_SCREEN.ALBUM_SETTINGS]: undefined;
   [APP_SCREEN.CREATE_ALBUM]: undefined;
   [APP_SCREEN.CREATE_MOMENT]: {
     member: MemberWithAlbumDto;
@@ -44,9 +43,12 @@ export type RootStackParamList = {
   [APP_SCREEN.PHOTO_DETAIL]: {
     photoUrl: string;
   };
+  [APP_SCREEN.UPDATE_ALBUM]: {
+    member: MemberWithAlbumDto;
+  };
 
   [APP_SCREEN.SETTINGS]: undefined;
-  [APP_SCREEN.PROFILE_SETTINGS]: undefined;
+  [APP_SCREEN.UPDATE_PROFILE]: undefined;
 };
 
 export type AuthStackParamList = {
@@ -59,7 +61,6 @@ export type MainDrawerParamList = {
   [APP_SCREEN.MAIN]: undefined;
   [APP_SCREEN.ON_BOARDING]: undefined;
 
-  [APP_SCREEN.ALBUM_SETTINGS]: undefined;
   [APP_SCREEN.CREATE_ALBUM]: undefined;
   [APP_SCREEN.CREATE_MOMENT]: {
     member: MemberWithAlbumDto;
@@ -76,7 +77,10 @@ export type MainDrawerParamList = {
   [APP_SCREEN.PHOTO_DETAIL]: {
     photoUrl: string;
   };
+  [APP_SCREEN.UPDATE_ALBUM]: {
+    member: MemberWithAlbumDto;
+  };
 
   [APP_SCREEN.SETTINGS]: undefined;
-  [APP_SCREEN.PROFILE_SETTINGS]: undefined;
+  [APP_SCREEN.UPDATE_PROFILE]: undefined;
 };

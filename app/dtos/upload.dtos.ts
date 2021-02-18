@@ -5,3 +5,7 @@ export interface DeleteImageBlobRequest {
 export interface DeleteImagesBlobRequest {
   fileNames: string[];
 }
+
+export interface DeletePhotoBlobRequest {
+  fileName: string;
+}

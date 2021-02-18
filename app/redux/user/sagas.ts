@@ -1,9 +1,10 @@
 import { SagaIterator } from 'redux-saga';
-import { call, take, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { AuthTokensDto, SignInRequest, SignInSocialRequest, SignInType } from '@/dtos';
 import { signInAsync, signInSocialAsync } from '@/services';
 import { decodeUser } from '@/utils';
-import { getAlbumsFailed, ActionTypes as AlbumActionTypes } from '../album/actions';
+import { setClearAlbum } from '../album/actions';
+import { setClearMoment } from '../moment/actions';
 import { signInFailed, signInSuccess, signOutSuccess, ActionTypes, SignInAction, SignOutAction } from './actions';
 
 export function* signIn({ payload }: SignInAction): SagaIterator {
@@ -23,8 +24,6 @@ export function* signIn({ payload }: SignInAction): SagaIterator {
       const user = decodeUser(res.accessToken, res.refreshToken);
 
       yield put(signInSuccess({ user }));
-
-      yield take(AlbumActionTypes.GET_ALBUMS);
     }
     if (password && !socialType && !socialId) {
       const request: SignInRequest = {
@@ -38,12 +37,17 @@ export function* signIn({ payload }: SignInAction): SagaIterator {
       yield put(signInSuccess({ user }));
     }
   } catch (error) {
-    yield put(getAlbumsFailed({ errorMsg: error }));
     yield put(signInFailed({ errorMsg: error }));
   }
 }
 
 function* signOut({ payload }: SignOutAction): SagaIterator {
+  const { clearStorage } = payload;
+  if (clearStorage) {
+    yield put(setClearAlbum());
+    yield put(setClearMoment());
+  }
+
   yield put(signOutSuccess());
 }
 

@@ -1,33 +1,31 @@
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import React, { useState } from 'react';
+import IsEqual from 'react-fast-compare';
 import { Alert, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Button, KeyboardAwareScrollView, Text, TextField, View } from 'react-native-ui-lib';
-import { CustomLoading, TopNavigation, TopNavigationAction } from '@/components';
+import { AlbumTemplateItem, CustomLoading, TopNavigation, TopNavigationAction } from '@/components';
+import { initAlbumTemplate, AlbumTemplate } from '@/components/albumTemplateItem/interfaces';
 import { APP_SCREEN, RootStackParamList } from '@/configs';
 import { CreateAlbumRequest } from '@/dtos';
 import { useAlbumStore, useUserStore } from '@/hooks';
 import { translate } from '@/i18n';
 import { createAlbumAsync } from '@/services';
 import { placeholderColor } from '@/styles';
-import { isValidAlbumDesc, isValidAlbumName, getBGThumbnail, wp } from '@/utils';
-import AlbumItemTemplate from './albumTemplateItem';
-import { initAlbumTemplate, initParamsType, AlbumTemplate, CreateAlbumParamsType } from './interfaces';
+import { isValidAlbumDesc, isValidAlbumName, getBGThumbnail } from '@/utils';
+import { initParamsType, CreateAlbumParamsType } from './interfaces';
 import styles from './styles';
+
+const { width: viewportWidth } = Dimensions.get('window');
 
 const CreateAlbumScreen = (
   props: DrawerScreenProps<RootStackParamList, APP_SCREEN.CREATE_ALBUM>,
 ): React.ReactElement => {
   const { navigation } = props;
-  const { width: viewportWidth } = Dimensions.get('window');
   const { getAlbums } = useAlbumStore();
   const { user } = useUserStore();
   const [params, setParams] = useState<CreateAlbumParamsType>(initParamsType);
   const [isLoading, setLoading] = useState<boolean>(false);
-
-  const handleAlbumPress = (item: AlbumTemplate): void => {
-    setParams({ ...params, coverColor: item.coverColor });
-  };
 
   const onBackPress = (): void => {
     navigation.goBack();
@@ -92,7 +90,7 @@ const CreateAlbumScreen = (
   );
 
   const renderAlbumItem = (baseData: { index: number; dataIndex: number; item: AlbumTemplate }) => (
-    <AlbumItemTemplate item={baseData.item} handleAlbumPress={handleAlbumPress} />
+    <AlbumTemplateItem item={baseData.item} />
   );
 
   if (isLoading) {
@@ -100,12 +98,7 @@ const CreateAlbumScreen = (
   }
   return (
     <KeyboardAwareScrollView style={styles.container}>
-      <TopNavigation
-        style={styles.hedaerContainer}
-        title={translate('createAlbum.header')}
-        leftControl={renderLeftControl()}
-        darkBackground
-      />
+      <TopNavigation title={translate('createAlbum.header')} leftControl={renderLeftControl()} darkBackground />
       <View style={styles.codeContainer}>
         <Text style={styles.codeDesc}>{translate('createAlbum.codeDesc')}</Text>
       </View>
@@ -157,4 +150,4 @@ const CreateAlbumScreen = (
   );
 };
 
-export default CreateAlbumScreen;
+export default React.memo(CreateAlbumScreen, IsEqual);

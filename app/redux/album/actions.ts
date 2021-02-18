@@ -2,7 +2,6 @@ import {
   ChangeCurrentAlbumPayload,
   GetAlbumsFailedPayload,
   GetAlbumsSuccessPayload,
-  SetClearAlbumPayload,
   SetCurrentAlbumPayload,
 } from './payloads';
 
@@ -42,7 +41,7 @@ export interface SetCurrentAlbumAction {
 
 export interface SetClearAlbumAction {
   type: typeof ActionTypes.SET_CLEAR_ALBUM;
-  payload: SetClearAlbumPayload;
+  payload: undefined;
 }
 
 export type AlbumAction =
@@ -78,7 +77,7 @@ export const setCurrentAlbum = (payload: SetCurrentAlbumPayload): AlbumAction =>
   payload,
 });
 
-export const setClearAlbum = (payload: SetClearAlbumPayload): AlbumAction => ({
+export const setClearAlbum = (): AlbumAction => ({
   type: ActionTypes.SET_CLEAR_ALBUM,
-  payload,
+  payload: undefined,
 });

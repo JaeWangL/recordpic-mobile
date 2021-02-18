@@ -22,6 +22,8 @@ export const reducers = (state: MomentState = initialState, action: MomentAction
         case ActionTypes.SET_CURRENT_PHOTO:
           draft.currentPhotoIndex = (payload as SetCurrentPhotoPayload).index;
           return draft;
+        case ActionTypes.SET_CLEAR_MOMENT:
+          return initialState;
         default:
           return state;
       }

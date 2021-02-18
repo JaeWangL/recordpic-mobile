@@ -7,13 +7,20 @@
     "createMomentMsg": "New moment was created",
     "join": "Join",
     "no": "No",
+    "save": "Save",
     "yes": "Yes"
   },
   "alert": {
+    "albumUpdated": "Changes are saved.",
+    "codeCopied": "Code was copied",
+    "memberExpelled": "The member was expelled",
+    "noMessagingPermission": "You can not get notifications from RecordPic",
     "photoSaved": "Photo was saved successfully"
   },
   "ask": {
-    "deletePhoto": "Do you want to delete this one?"
+    "deletePhoto": "Do you want to delete this one?",
+    "expelMember": "The member will be expelled. Do you want?",
+    "leaveAlbum": "Do you want to leave this album?"
   },
   "error": {
     "albumValidating": "Name must be less than 10, Description must be less than 15 characters",
@@ -30,7 +37,8 @@
     "playNotAvailable": "Play services not available or outdated",
     "selectTheme": "Please select album theme",
     "server": "Server error. Please try again later",
-    "unk": "An unknown error occured"
+    "unk": "An unknown error occured",
+    "updateAlbum": "Unexpected error occured while updating album"
   },
   "albums": {
     "header": "Album List",
@@ -80,5 +88,31 @@
     "cancel": "Cancel",
     "deleteMoment": "Delete Moment",
     "editMoment": "Edit Moment"
+  },
+  "settings": {
+    "createComment": "posted comment for your moment",
+    "createMember": "joined album",
+    "createMoment": "posted new moment",
+    "deleteMember": "leaved album",
+    "feedback": "Feedback",
+    "header": "MyPage",
+    "myProfile": "My Profile",
+    "terms": "Terms",
+    "updateMoment": "updated the moment"
+  },
+  "updateAlbum": {
+    "header": "Album Settings",
+    "codeDesc": "Share code to who you want to invite! Press code for copying",
+    "placeholderTitle": "Please input album name",
+    "placeholderDesc": "Please input album description",
+    "subtitleCode": "Invite Code",
+    "subtitleName": "Album Name",
+    "subtitleDesc": "Album Description",
+    "subtitleMembers": "Album Members",
+    "subtitleTheme": "Album Theme"
+  },
+  "updateProfile": {
+    "placeholderName": "Input name or nickname",
+    "signOut": "Sign Out"
   }
 }
