@@ -3,12 +3,12 @@ import { Platform, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginHorizontal: 24,
+    marginHorizontal: 32,
     marginVertical: 14,
   },
   lastItemContainer: {
     flexDirection: 'row',
-    marginHorizontal: 24,
+    marginHorizontal: 32,
     marginTop: 14,
     marginBottom: 100,
   },

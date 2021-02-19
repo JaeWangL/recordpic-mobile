@@ -24,30 +24,33 @@ const SignInScreen = (props: DrawerScreenProps<AuthStackParamList, APP_SCREEN.SI
   }, []);
 
   const onGooglePressAsync = async (): Promise<void> => {
+    if (__DEV__) {
+      signIn({
+        email: 'jnsg5072@gmail.com',
+        name: 'JaeWang Lee',
+        imageUrl:
+          // eslint-disable-next-line max-len
+          'https://lh5.googleusercontent.com/-zjDwE4_Stys/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnHxci6Tx9WHUE0rHnqFnKF5kvmow/s120/photo.jpg',
+        socialType: 1,
+        socialId: '114204659577173604862',
+      });
+      return;
+    }
+
     const enable = await GoogleSignin.hasPlayServices();
     if (enable) {
       try {
         const userInfo = await GoogleSignin.signIn();
 
-        if (__DEV__) {
-          signIn({
-            email: 'jnsg5072@gmail.com',
-            name: 'JaeWang Lee',
-            imageUrl: userInfo.user.photo,
-            socialType: 1,
-            socialId: '114204659577173604862',
-          });
-        } else {
-          signIn({
-            email: userInfo.user.email,
-            name: userInfo.user.name || userInfo.user.email,
-            imageUrl:
-              // eslint-disable-next-line
-              'https://lh5.googleusercontent.com/-zjDwE4_Stys/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnHxci6Tx9WHUE0rHnqFnKF5kvmow/s120/photo.jpg',
-            socialType: 1,
-            socialId: userInfo.user.id,
-          });
-        }
+        signIn({
+          email: userInfo.user.email,
+          name: userInfo.user.name || userInfo.user.email,
+          imageUrl:
+            // eslint-disable-next-line
+            'https://lh5.googleusercontent.com/-zjDwE4_Stys/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnHxci6Tx9WHUE0rHnqFnKF5kvmow/s120/photo.jpg',
+          socialType: 1,
+          socialId: userInfo.user.id,
+        });
       } catch (error) {
         if (error.code === statusCodes.IN_PROGRESS) {
           Alert.alert('', translate('error.playInProgress'));

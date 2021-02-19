@@ -56,24 +56,32 @@ const CreateModal = (props: ICreateModalProps): React.ReactElement => {
   }
   return (
     <View style={styles.modalContainer}>
-      <Text style={styles.modalTitle}>{translate('albums.modalTitle')}</Text>
-      <Text style={styles.modalDesc}>{translate('albums.modalInivteDesc')}</Text>
-      <TextField
-        style={styles.inputCodeContainer}
-        placeholder={translate('album.placeholderInviteCode')}
-        placeholderTextColor={placeholderGrayColor}
-        value={inviteCode}
-        onChangeText={setInviteCode}
-      />
-      <Button style={styles.buttonJoin} labelStyle={styles.buttonJoinLabel} onPress={onJoinPressAsync}>
-        {translate('common.join')}
-      </Button>
-      <Button style={styles.buttonCreate} labelStyle={styles.buttonCreateLabel} onPress={onCreatePress}>
-        {translate('common.createAlbum')}
-      </Button>
-      <Text style={styles.closeLabel} onPress={handleToggleModal}>
-        {translate('common.close')}
-      </Text>
+      <View style={styles.contentContainer}>
+        <Text style={styles.modalTitle}>{translate('albums.modalTitle')}</Text>
+        <Text style={styles.modalDesc}>{translate('albums.modalInivteDesc')}</Text>
+        <TextField
+          style={styles.inputCodeContainer}
+          placeholder={translate('albums.placeholderInviteCode')}
+          placeholderTextColor={placeholderGrayColor}
+          value={inviteCode}
+          onChangeText={setInviteCode}
+        />
+        <Button
+          style={styles.buttonJoin}
+          label={translate('common.join')}
+          labelStyle={styles.buttonJoinLabel}
+          onPress={onJoinPressAsync}
+        />
+        <Button
+          style={styles.buttonCreate}
+          label={translate('common.createAlbum')}
+          labelStyle={styles.buttonCreateLabel}
+          onPress={onCreatePress}
+        />
+        <Text style={styles.closeLabel} onPress={handleToggleModal}>
+          {translate('common.close')}
+        </Text>
+      </View>
     </View>
   );
 };

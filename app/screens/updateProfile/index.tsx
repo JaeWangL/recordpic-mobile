@@ -26,8 +26,13 @@ const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.U
       return;
     }
 
-    setImageUrl(user.user.imageUrl);
-    setName(user.user.name);
+    setLoading(true);
+    try {
+      setImageUrl(user.user.imageUrl);
+      setName(user.user.name);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const handleSignoutAsync = useCallback(async (): Promise<void> => {

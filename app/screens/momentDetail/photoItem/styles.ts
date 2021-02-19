@@ -10,14 +10,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: Platform.OS === 'android' ? 8 : 16,
   },
-  photoLeft: {
-    height: 250,
-    width: '100%',
-  },
   photoRight: {
     alignSelf: 'flex-end',
-    height: 250,
-    width: '100%',
   },
   titleLabel: {
     marginTop: 24,

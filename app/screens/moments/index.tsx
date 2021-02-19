@@ -3,6 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import IsEqual from 'react-fast-compare';
 import { ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
 import { FloatingAction } from 'react-native-floating-action';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Chip, Text, View } from 'react-native-ui-lib';
 import Edit3 from '@/assets/icons/edit3.svg';
 import { CustomLoading, TopNavigation, TopNavigationAction } from '@/components';

@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'transparent',
+    paddingBottom: 12,
   },
   titleContainer: {
     justifyContent: 'center',
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
     fontFamily: 'NanumMyeongjoExtraBold',
     fontSize: 20,
     fontWeight: '700',
+    paddingBottom: 12,
   },
   titleDarkLabel: {
     color: 'white',

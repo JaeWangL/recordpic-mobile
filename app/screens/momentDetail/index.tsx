@@ -2,7 +2,7 @@ import { DrawerScreenProps } from '@react-navigation/drawer';
 import Moment from 'moment';
 import React, { useCallback, useRef } from 'react';
 import isEqual from 'react-fast-compare';
-import { ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
+import { Dimensions, ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import Icon from 'react-native-vector-icons/Feather';
 import { Text, View } from 'react-native-ui-lib';
@@ -15,6 +15,7 @@ import { getBGImage } from '@/utils';
 import PhotoItem from './photoItem';
 import styles from './styles';
 
+const { width: viewportWidth } = Dimensions.get('window');
 const keyExtractor = (item: PhotoPreviewDto) => item.id.toString();
 
 const MomentDetailScreen = (
@@ -72,7 +73,14 @@ const MomentDetailScreen = (
   }, []);
 
   const renderPhotoItem = (info: ListRenderItemInfo<PhotoPreviewDto>): React.ReactElement => {
-    return <PhotoItem index={info.index} item={info.item} handlePhotoPress={handlePhotoPress} />;
+    return (
+      <PhotoItem
+        index={info.index}
+        item={info.item}
+        handlePhotoPress={handlePhotoPress}
+        viewportWidth={viewportWidth}
+      />
+    );
   };
 
   if (!user || isLoading) {

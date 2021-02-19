@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
   headerChipLabel: {
     color: 'white',
     fontFamily: 'Noto Sans KR',
-    paddingTop: Platform.OS === 'android' ? 2 : 6,
-    paddingBottom: Platform.OS === 'android' ? 0 : 8,
+    paddingTop: 6,
+    paddingBottom: 8,
   },
   momentsContainer: {
     marginTop: 2,

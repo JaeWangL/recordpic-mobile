@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   inputDescContainer: {
-    minHeight: 56,
-    marginTop: Platform.OS === 'android' ? -16 : -32,
+    minHeight: Platform.OS === 'android' ? 40 : 56,
+    marginTop: Platform.OS === 'android' ? -40 : -32,
     marginBottom: 42,
     marginHorizontal: '15%',
     backgroundColor: 'white',

@@ -30,13 +30,14 @@ const styles = StyleSheet.create({
     fontSize: 23,
   },
   inputNameContainer: {
-    marginTop: 24,
+    marginTop: 12,
     color: 'white',
     backgroundColor: 'transparent',
     fontFamily: 'Noto Sans KR',
     fontSize: 19,
     fontWeight: '400',
     textAlign: 'center',
+    height: 50,
   },
   signout: {
     color: 'rgba(255, 255, 255, 0.6)',
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   buttonBackLabel: {
-    marginVertical: Platform.OS === 'android' ? 0 : 8,
+    marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'white',
     fontFamily: 'Noto Sans KR',
     fontSize: 18,
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   buttonCreateLabel: {
-    marginVertical: Platform.OS === 'android' ? 0 : 8,
+    marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'black',
     fontFamily: 'Noto Sans KR',
     fontSize: 18,

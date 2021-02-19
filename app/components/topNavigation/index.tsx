@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextStyle, ViewStyle } from 'react-native';
+import React, { useCallback } from 'react';
+import { StatusBar, TextStyle, Platform, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Text, View, ViewProps } from 'react-native-ui-lib';
 import { isValidString } from '@/utils';
@@ -16,12 +16,12 @@ const TopNavigation = (props: TopNavigationProps): React.ReactElement => {
   const { darkBackground, leftControl, rightControls, style, title, ...restProps } = props;
   const insects = useSafeAreaInsets();
 
-  const getSafeTopStyle = (): ViewStyle => {
+  const getSafeTopStyle = useCallback((): ViewStyle => {
     return {
-      paddingTop: insects.top,
+      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : insects.top,
       paddingBottom: 12,
     };
-  };
+  }, []);
 
   const renderText = (text: string, style: TextStyle): React.ReactElement => {
     return <Text style={style}>{text}</Text>;

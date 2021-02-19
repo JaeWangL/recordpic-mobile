@@ -1,5 +1,5 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import IsEqual from 'react-fast-compare';
 import { Dimensions } from 'react-native';
 import Modal from 'react-native-modal';
@@ -26,7 +26,30 @@ const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
   const { navigation } = props;
   const { height: viewportHeight } = Dimensions.get('window');
   const { album, changeCurrentAlbum } = useAlbumStore();
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [albums, setAlbums] = useState<MemberWithAlbumDto[]>();
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!album.members) {
+      return;
+    }
+
+    const albumList = album.members.concat({
+      id: 0,
+      rank: 999,
+      album: {
+        id: 0,
+        name: '0',
+        description: '0',
+        coverColor: '0',
+        coverUrl: '0',
+        inviteCode: '0',
+        createdDate: new Date(),
+      },
+    });
+
+    setAlbums(albumList);
+  }, []);
 
   const handleCreatePress = () => {
     setModalVisible(false);
@@ -54,7 +77,10 @@ const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
     changeCurrentAlbum({ index });
   };
 
-  const renderLeftControl = (): React.ReactElement => <TopNavigationAction iconName="x" onPress={onClosePress} />;
+  const renderLeftControl = useCallback(
+    (): React.ReactElement => <TopNavigationAction iconName="x" onPress={onClosePress} />,
+    [],
+  );
 
   const renderAlbumItem = (baseData: {
     index: number;
@@ -69,7 +95,7 @@ const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
     />
   );
 
-  if (!album.members) {
+  if (!albums) {
     return <CustomLoading />;
   }
   return (
@@ -85,7 +111,7 @@ const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
           inactiveSlideScale={1}
           activeSlideAlignment="start"
           firstItem={album.currentIndex}
-          data={album.members}
+          data={albums}
           renderItem={renderAlbumItem}
           onSnapToItem={onSnapToAlbumItem}
         />

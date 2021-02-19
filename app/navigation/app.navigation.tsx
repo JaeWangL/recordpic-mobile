@@ -29,7 +29,7 @@ const AppContainer = (): React.ReactElement => {
   return (
     <SafeAreaProvider>
       <NavigationContainer ref={navigationRef} onReady={onReadyNavigation}>
-        <CustomStatusBar />
+        <CustomStatusBar darkBackground />
         <RootNavigator user={user.user} />
       </NavigationContainer>
     </SafeAreaProvider>

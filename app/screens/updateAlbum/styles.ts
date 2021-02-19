@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   codeContainer: {
     marginHorizontal: 24,
     marginTop: 10,
-    paddingTop: Platform.OS === 'android' ? 6 : 16,
-    paddingBottom: Platform.OS === 'android' ? 12 : 24,
+    paddingTop: 16,
+    paddingBottom: 24,
     paddingHorizontal: 24,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
@@ -46,11 +46,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   inputContainer: {
-    marginTop: 12,
+    marginTop: 6,
     color: 'white',
     fontFamily: 'Noto Sans KR Light',
     fontSize: Platform.OS === 'android' ? 16 : 17,
     fontWeight: '400',
+    height: 40,
   },
   carouselContainer: {
     marginVertical: 24,
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   buttonBackLabel: {
-    marginVertical: Platform.OS === 'android' ? 0 : 8,
+    marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'white',
     fontFamily: 'Noto Sans KR',
     fontSize: 18,
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   buttonCreateLabel: {
-    marginVertical: Platform.OS === 'android' ? 0 : 8,
+    marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'black',
     fontFamily: 'Noto Sans KR',
     fontSize: 18,
