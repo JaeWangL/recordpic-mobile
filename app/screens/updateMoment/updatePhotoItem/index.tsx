@@ -10,17 +10,17 @@ import { translate } from '@/i18n';
 import { deleteImageBlobAsync, uploadImageBlobAsync } from '@/services';
 import { photoParamsStyles, placeholderGray200Color, transparentChipColor } from '@/styles';
 import { getFilenamefromUrl, isEven, LogUtil } from '@/utils';
-import { CreatePhotoParamsType } from '../interfaces';
+import { UpdatePhotoParamsType } from '../interfaces';
 
-interface ICreatePhotoProps {
+interface IUpdatePhotoProps {
   user?: UserDto;
-  params: CreatePhotoParamsType;
-  handleParmsChange: (params: CreatePhotoParamsType) => void;
+  params: UpdatePhotoParamsType;
+  handleParmsChange: (params: UpdatePhotoParamsType) => void;
   handleDeletePhoto: (index: number) => void;
   viewportWidth: number;
 }
 
-const CreatePhotoItem = (props: ICreatePhotoProps): React.ReactElement => {
+const UpdatePhotoItem = (props: IUpdatePhotoProps): React.ReactElement => {
   const { handleDeletePhoto, handleParmsChange, params, viewportWidth, user } = props;
   const [calcImgHeight, setCalcImgHeight] = useState<number>(0);
 
@@ -153,8 +153,8 @@ const CreatePhotoItem = (props: ICreatePhotoProps): React.ReactElement => {
   );
 };
 
-CreatePhotoItem.defaultProps = {
+UpdatePhotoItem.defaultProps = {
   user: undefined,
 };
 
-export default React.memo(CreatePhotoItem, IsEqual);
+export default React.memo(UpdatePhotoItem, IsEqual);

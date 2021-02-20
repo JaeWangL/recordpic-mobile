@@ -2,15 +2,16 @@ import { DrawerScreenProps } from '@react-navigation/drawer';
 import Moment from 'moment';
 import React, { useCallback, useRef } from 'react';
 import isEqual from 'react-fast-compare';
-import { Dimensions, ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
+import { Alert, Dimensions, ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import Icon from 'react-native-vector-icons/Feather';
 import { Text, View } from 'react-native-ui-lib';
 import { CustomLoading, TopNavigation, TopNavigationText } from '@/components';
 import { RootStackParamList, APP_SCREEN } from '@/configs';
-import { PhotoPreviewDto } from '@/dtos';
+import { DeleteMomentRequest, PhotoPreviewDto } from '@/dtos';
 import { useMomentStore, usePhotosPreviewFetch, useUserStore } from '@/hooks';
 import { translate } from '@/i18n';
+import { deleteMomentAsync } from '@/services';
 import { getBGImage } from '@/utils';
 import PhotoItem from './photoItem';
 import styles from './styles';
@@ -23,7 +24,7 @@ const MomentDetailScreen = (
 ): React.ReactElement => {
   const { navigation, route } = props;
   const { member, currentMoment } = route.params;
-  const { changeCurrentPhoto, moment } = useMomentStore();
+  const { changeCurrentPhoto } = useMomentStore();
   const { user } = useUserStore();
   const { photos, isLoading } = usePhotosPreviewFetch(currentMoment.id, user.user);
   const menuList = useRef<Menu>(null);
@@ -46,6 +47,34 @@ const MomentDetailScreen = (
     }
   }, []);
 
+  const onDeletePresAsync = useCallback((): void => {
+    const handleDeleteAsync = async (): Promise<void> => {
+      if (!user.user) {
+        return;
+      }
+
+      const req: DeleteMomentRequest = {
+        id: currentMoment.id,
+      };
+      await deleteMomentAsync(req, user.user.accessToken);
+
+      navigation.goBack();
+    };
+
+    Alert.alert(
+      '',
+      translate('ask.deleteMoment'),
+      [
+        {
+          text: translate('common.no'),
+          style: 'cancel',
+        },
+        { text: translate('common.yes'), onPress: handleDeleteAsync },
+      ],
+      { cancelable: false },
+    );
+  }, []);
+
   const renderMenuButton = useCallback(() => {
     return <Icon style={styles.dropdownMenu} name="more-vertical" size={24} onPress={onMenuPress} />;
   }, []);
@@ -66,7 +95,9 @@ const MomentDetailScreen = (
         <Menu style={styles.dropdownMenu} ref={menuList} button={renderMenuButton()}>
           <MenuItem textStyle={styles.dropdownLabel}>{translate('photos.editMoment')}</MenuItem>
           <MenuDivider />
-          <MenuItem textStyle={styles.dropdownLabel}>{translate('photos.deleteMoment')}</MenuItem>
+          <MenuItem textStyle={styles.dropdownLabel} onPress={onDeletePresAsync}>
+            {translate('photos.deleteMoment')}
+          </MenuItem>
         </Menu>
       </View>
     );
@@ -88,7 +119,7 @@ const MomentDetailScreen = (
   }
   return (
     <ImageBackground style={styles.container} source={{ uri: getBGImage(member.album.coverColor) }}>
-      <TopNavigation leftControl={renderLeftControl()} />
+      <TopNavigation title={member.album.name} leftControl={renderLeftControl()} />
       <FlatList
         ref={photosList}
         style={styles.listContainer}

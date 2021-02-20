@@ -1,3 +1,4 @@
+/*
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import Moment from 'moment';
 import React, { useCallback, useState } from 'react';
@@ -15,24 +16,24 @@ import { translate } from '@/i18n';
 import { createMomentAsync } from '@/services';
 import { photoListStyles } from '@/styles';
 import { getBGImage } from '@/utils';
-import CreatePhotoItem from './createPhotoItem';
-import { initMParamsType, initPParamsType, CreateMomentParamsType, CreatePhotoParamsType } from './interfaces';
+import CreatePhotoItem from './updatePhotoItem';
+import { initMParamsType, initPParamsType, UpdateMomentParamsType, UpdatePhotoParamsType } from './interfaces';
 
 const { width: viewportWidth } = Dimensions.get('window');
-const keyExtractor = (item: CreatePhotoParamsType) => item.index.toString();
+const keyExtractor = (item: UpdatePhotoParamsType) => item.index.toString();
 
-const CreateMomentScreen = (
-  props: DrawerScreenProps<RootStackParamList, APP_SCREEN.CREATE_MOMENT>,
+const UpdateMomentScreen = (
+  props: DrawerScreenProps<RootStackParamList, APP_SCREEN.UPDATE_MOMENT>,
 ): React.ReactElement => {
   const { navigation, route } = props;
-  const { member } = route.params;
+  const { member, currentMoment } = route.params;
   const { user } = useUserStore();
-  const [paramsM, setMParams] = useState<CreateMomentParamsType>(initMParamsType);
-  const [paramsP, setPParams] = useState<CreatePhotoParamsType[]>(initPParamsType);
+  const [paramsM, setMParams] = useState<UpdateMomentParamsType>(initMParamsType);
+  const [paramsP, setPParams] = useState<UpdatePhotoParamsType[]>(initPParamsType);
   const [showDate, setShowDate] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  const handleParmsChange = (params: CreatePhotoParamsType): void => {
+  const handleParmsChange = (params: UpdatePhotoParamsType): void => {
     const newParams = Array.from(paramsP);
     newParams[params.index].photoUrl = params.photoUrl;
     newParams[params.index].photoTitle = params.photoTitle;
@@ -155,7 +156,7 @@ const CreateMomentScreen = (
       return;
     }
 
-    const newCard: CreatePhotoParamsType = {
+    const newCard: UpdatePhotoParamsType = {
       index: paramsP.length,
     };
     const newParams = paramsP.concat(newCard);
@@ -208,7 +209,7 @@ const CreateMomentScreen = (
     );
   };
 
-  const renderItem = (info: ListRenderItemInfo<CreatePhotoParamsType>): React.ReactElement => {
+  const renderItem = (info: ListRenderItemInfo<UpdatePhotoParamsType>): React.ReactElement => {
     return (
       <CreatePhotoItem
         user={user.user}
@@ -246,4 +247,5 @@ const CreateMomentScreen = (
   );
 };
 
-export default React.memo(CreateMomentScreen, IsEqual);
+export default React.memo(UpdateMomentScreen, IsEqual);
+*/

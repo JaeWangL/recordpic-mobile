@@ -1,7 +1,7 @@
 import { Platform, StyleSheet } from 'react-native';
-import { dividerGrayColor } from '@/styles';
+import { dividerGrayColor, placeholderGray200Color } from './colors';
 
-const styles = StyleSheet.create({
+export const photoListStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -54,4 +54,43 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export const photoParamsStyles = StyleSheet.create({
+  photoContainer: {
+    marginTop: 12,
+  },
+  photoRight: {
+    alignSelf: 'flex-end',
+  },
+  chipContainer: {
+    position: 'absolute',
+    left: 12,
+    bottom: 12,
+    flexDirection: 'row',
+  },
+  photoChipRight: {
+    marginLeft: 4,
+  },
+  photoChipLabel: {
+    color: 'white',
+    fontFamily: 'Noto Sans KR',
+  },
+  inputTitleContainer: {
+    height: Platform.OS === 'android' ? 50 : 30,
+    marginTop: Platform.OS === 'android' ? 16 : 24,
+    marginHorizontal: '15%',
+    backgroundColor: 'white',
+    fontFamily: 'NanumMyeongjoBold',
+    fontSize: 20,
+    color: 'black',
+  },
+  inputDescContainer: {
+    minHeight: Platform.OS === 'android' ? 40 : 56,
+    marginTop: Platform.OS === 'android' ? -40 : -32,
+    marginBottom: 42,
+    marginHorizontal: '15%',
+    backgroundColor: 'white',
+    fontFamily: 'Noto Sans KR',
+    fontSize: 15,
+    color: placeholderGray200Color,
+  },
+});

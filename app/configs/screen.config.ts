@@ -15,6 +15,7 @@ export enum APP_SCREEN {
   MOMENT_EDIT = 'MomentEdit',
   PHOTO_DETAIL = 'PhotoDetail',
   UPDATE_ALBUM = 'UpdateAlbum',
+  UPDATE_MOMENT = 'UpdateMoment',
 
   SETTINGS = 'Settings',
   UPDATE_PROFILE = 'UpdateProfile',
@@ -45,6 +46,10 @@ export type RootStackParamList = {
   };
   [APP_SCREEN.UPDATE_ALBUM]: {
     member: MemberWithAlbumDto;
+  };
+  [APP_SCREEN.UPDATE_MOMENT]: {
+    member: MemberWithAlbumDto;
+    currentMoment: MomentPreviewDto;
   };
 
   [APP_SCREEN.SETTINGS]: undefined;
@@ -79,6 +84,10 @@ export type MainDrawerParamList = {
   };
   [APP_SCREEN.UPDATE_ALBUM]: {
     member: MemberWithAlbumDto;
+  };
+  [APP_SCREEN.UPDATE_MOMENT]: {
+    member: MemberWithAlbumDto;
+    currentMoment: MomentPreviewDto;
   };
 
   [APP_SCREEN.SETTINGS]: undefined;

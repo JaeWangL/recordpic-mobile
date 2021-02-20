@@ -1,5 +1,6 @@
 import moment from 'moment';
 import React from 'react';
+import IsEqual from 'react-fast-compare';
 import { TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Text, View } from 'react-native-ui-lib';
@@ -52,4 +53,4 @@ const AlbumItem = (props: IAlbumItemProps): React.ReactElement => {
   );
 };
 
-export default AlbumItem;
+export default React.memo(AlbumItem, IsEqual);

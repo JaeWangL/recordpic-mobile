@@ -34,12 +34,17 @@ const UpdateAlbumScreen = (
   const [isBusy, setBusy] = useState<boolean>(false);
 
   useEffect(() => {
-    setParams({
-      name: member.album.name,
-      description: member.album.description,
-      coverColor: member.album.coverColor,
-      coverUrl: member.album.coverUrl,
-    });
+    setBusy(true);
+    try {
+      setParams({
+        name: member.album.name,
+        description: member.album.description,
+        coverColor: member.album.coverColor,
+        coverUrl: member.album.coverUrl,
+      });
+    } finally {
+      setBusy(false);
+    }
   }, [member.album]);
 
   const handleDeleteMemberPressAsync = useCallback(async (item: MemberPreviewDto): Promise<void> => {

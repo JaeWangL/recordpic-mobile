@@ -18,6 +18,7 @@
     "photoSaved": "Photo was saved successfully"
   },
   "ask": {
+    "deleteMoment": "Do you want to delete this moment?",
     "deletePhoto": "Do you want to delete this one?",
     "expelMember": "The member will be expelled. Do you want?",
     "leaveAlbum": "Do you want to leave this album?"
@@ -99,6 +100,10 @@
     "myProfile": "My Profile",
     "terms": "Terms",
     "updateMoment": "updated the moment"
+  },
+  "signIn": {
+    "title": "Record your pictures together",
+    "continueGoogle": "Continue with Google"
   },
   "updateAlbum": {
     "header": "Album Settings",

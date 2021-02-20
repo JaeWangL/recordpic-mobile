@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import IsEqual from 'react-fast-compare';
 import { Alert } from 'react-native';
 import { Button, Text, TextField, View } from 'react-native-ui-lib';
 import { useAlbumStore, useUserStore } from '@/hooks';
@@ -86,4 +87,4 @@ const CreateModal = (props: ICreateModalProps): React.ReactElement => {
   );
 };
 
-export default CreateModal;
+export default React.memo(CreateModal, IsEqual);

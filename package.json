@@ -6,7 +6,7 @@
     "clean": "watchman watch-del-all && rm -rf /tmp/metro-*",
     "android": "react-native run-android",
     "android:aab": "cd android && ./gradlew bundleRelease",
-    "android:apk": "cd android && ./gradlew assembleRelease",
+    "android:apk": "cd android && ./gradlew assembleRelease --stacktrace",
     "android:release": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
     "ios:release": "react-native run-ios --configuration Release",

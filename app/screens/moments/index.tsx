@@ -3,7 +3,6 @@ import React, { useCallback, useRef } from 'react';
 import IsEqual from 'react-fast-compare';
 import { ImageBackground, FlatList, ListRenderItemInfo } from 'react-native';
 import { FloatingAction } from 'react-native-floating-action';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Chip, Text, View } from 'react-native-ui-lib';
 import Edit3 from '@/assets/icons/edit3.svg';
 import { CustomLoading, TopNavigation, TopNavigationAction } from '@/components';
@@ -47,7 +46,7 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
 
   const onSettingsPress = useCallback((): void => {
     navigation.navigate(APP_SCREEN.UPDATE_ALBUM, { member });
-  }, []);
+  }, [member]);
 
   const renderLeftControl = useCallback(
     (): React.ReactElement => <TopNavigationAction iconName="menu" onPress={onMenuPress} />,

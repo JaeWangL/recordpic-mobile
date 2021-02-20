@@ -1,3 +1,4 @@
+import { useIsDrawerOpen } from '@react-navigation/drawer';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import React, { useCallback, useEffect, useState } from 'react';
 import IsEqual from 'react-fast-compare';
@@ -25,31 +26,38 @@ const keyExtractor = (item: MemberWithAlbumDto) => item.id.toString();
 const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
   const { navigation } = props;
   const { height: viewportHeight } = Dimensions.get('window');
+  const isDrawerOpen = useIsDrawerOpen();
   const { album, changeCurrentAlbum } = useAlbumStore();
   const [albums, setAlbums] = useState<MemberWithAlbumDto[]>();
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!album.members) {
+    if (!isDrawerOpen || !album.members) {
       return;
     }
 
-    const albumList = album.members.concat({
-      id: 0,
-      rank: 999,
-      album: {
+    setLoading(true);
+    try {
+      const albumList = album.members.concat({
         id: 0,
-        name: '0',
-        description: '0',
-        coverColor: '0',
-        coverUrl: '0',
-        inviteCode: '0',
-        createdDate: new Date(),
-      },
-    });
+        rank: 999,
+        album: {
+          id: 0,
+          name: '0',
+          description: '0',
+          coverColor: '0',
+          coverUrl: '0',
+          inviteCode: '0',
+          createdDate: new Date(),
+        },
+      });
 
-    setAlbums(albumList);
-  }, []);
+      setAlbums(albumList);
+    } finally {
+      setLoading(false);
+    }
+  }, [isDrawerOpen]);
 
   const handleCreatePress = () => {
     setModalVisible(false);
@@ -69,9 +77,9 @@ const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
     }
   };
 
-  const onClosePress = (): void => {
+  const onClosePress = useCallback((): void => {
     navigation.closeDrawer();
-  };
+  }, []);
 
   const onSnapToAlbumItem = (index: number): void => {
     changeCurrentAlbum({ index });
@@ -95,7 +103,7 @@ const CustomDrawer = (props: ICustomDrawerProps): React.ReactElement => {
     />
   );
 
-  if (!albums) {
+  if (!albums || isLoading) {
     return <CustomLoading />;
   }
   return (
