@@ -8,6 +8,7 @@
     "join": "Join",
     "no": "No",
     "save": "Save",
+    "updateMomentMsg": "Moment was successfully updated",
     "yes": "Yes"
   },
   "alert": {
@@ -38,6 +39,7 @@
     "playNotAvailable": "Play services not available or outdated",
     "selectTheme": "Please select album theme",
     "server": "Server error. Please try again later",
+    "signOut": "Unexpected error occured while signing out",
     "unk": "An unknown error occured",
     "updateAlbum": "Unexpected error occured while updating album"
   },

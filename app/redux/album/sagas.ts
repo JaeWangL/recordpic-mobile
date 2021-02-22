@@ -11,12 +11,10 @@ import {
   setClearAlbum,
   setCurrentAlbum,
   ActionTypes,
-  GetAlbumsAction,
-  SetClearAlbumAction,
   SetCurrentAlbumAction,
 } from './actions';
 
-export function* getAlbumsSaga({ payload }: GetAlbumsAction): SagaIterator {
+export function* getAlbumsSaga(): SagaIterator {
   const user = yield select((state: RootState) => state.user);
   if (!user.user) {
     return;
@@ -33,7 +31,7 @@ export function* getAlbumsSaga({ payload }: GetAlbumsAction): SagaIterator {
     }
 
     if (res.length === 0) {
-      yield put(setClearAlbum({ isReset: true }));
+      yield put(setClearAlbum());
 
       navigate(APP_SCREEN.INTRO);
     } else {
@@ -52,16 +50,9 @@ export function* changeCurrentAlbumSaga({ payload }: SetCurrentAlbumAction): Sag
   yield put(setCurrentAlbum({ index }));
 }
 
-export function* setClearAlbumSaga({ payload }: SetClearAlbumAction): SagaIterator {
-  const { isReset } = payload;
-
-  yield put(setClearAlbum({ isReset }));
-}
-
 const root = function* AlbumSaga() {
   yield takeLatest(ActionTypes.GET_ALBUMS, getAlbumsSaga);
   yield takeLatest(ActionTypes.CHANGE_CURRENT_ALBUM, changeCurrentAlbumSaga);
-  yield takeLatest(ActionTypes.SET_CLEAR_ALBUM, setClearAlbumSaga);
 };
 
 export default root;

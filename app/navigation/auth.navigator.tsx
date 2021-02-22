@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 const AuthNavigator = (): React.ReactElement => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: true }}>
+    <Stack.Navigator initialRouteName={APP_SCREEN.SIGN_IN} screenOptions={{ headerShown: false, gestureEnabled: true }}>
       <Stack.Screen name={APP_SCREEN.SIGN_IN} component={SignIn} />
     </Stack.Navigator>
   );

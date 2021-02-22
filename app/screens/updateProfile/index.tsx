@@ -2,21 +2,21 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import React, { useCallback, useEffect, useState } from 'react';
 import IsEqual from 'react-fast-compare';
-import { Alert, TouchableOpacity } from 'react-native';
+import { Alert, ScrollView, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
-import { Button, Image, KeyboardAwareScrollView, Text, TextField, View } from 'react-native-ui-lib';
+import { Button, Image, Text, TextField, View } from 'react-native-ui-lib';
 import { CustomLoading, TopNavigation, TopNavigationAction } from '@/components';
 import { APP_SCREEN, RootStackParamList } from '@/configs';
-import { DeletePhotoBlobRequest, UpdateProfileRequest } from '@/dtos';
+import { DeletePhotoBlobRequest } from '@/dtos';
 import { useUserStore } from '@/hooks';
 import { translate } from '@/i18n';
-import { deletePhotoBlobAsync, updateProfileAsync, uploadPhotoBlobAsync } from '@/services';
+import { deletePhotoBlobAsync, signOutAsync, uploadPhotoBlobAsync } from '@/services';
 import { getFilenamefromUrl, LogUtil } from '@/utils';
 import styles from './styles';
 
 const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.UPDATE_PROFILE>): React.ReactElement => {
   const { navigation } = props;
-  const { signOut, user } = useUserStore();
+  const { signOut, updateUser, user } = useUserStore();
   const [isLoading, setLoading] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>();
   const [name, setName] = useState<string>();
@@ -36,13 +36,26 @@ const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.U
   }, []);
 
   const handleSignoutAsync = useCallback(async (): Promise<void> => {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (isSignedIn) {
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
+    if (!user.user) {
+      return;
     }
 
-    signOut({ clearStorage: true });
+    setLoading(true);
+    try {
+      const isSignedIn = await GoogleSignin.isSignedIn();
+      if (isSignedIn) {
+        await GoogleSignin.revokeAccess();
+        await GoogleSignin.signOut();
+      }
+
+      await signOutAsync({ userId: user.user.id });
+    } catch (e) {
+      Alert.alert('', translate('error.signOut'));
+      LogUtil(e);
+    } finally {
+      setLoading(false);
+      signOut({ clearStorage: true });
+    }
   }, []);
 
   const onClosePress = useCallback((): void => {
@@ -89,7 +102,7 @@ const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.U
     await handleSignoutAsync();
   }, []);
 
-  const onSavePressAsync = async (): Promise<void> => {
+  const onSavePress = (): void => {
     if (!user.user || !name) {
       return;
     }
@@ -97,22 +110,7 @@ const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.U
       return;
     }
 
-    setLoading(true);
-    try {
-      const reqR: UpdateProfileRequest = {
-        id: user.user.id,
-        name,
-        imageUrl,
-      };
-      const resU = await updateProfileAsync(reqR, user.user.accessToken);
-      if (resU) {
-        await handleSignoutAsync();
-      }
-    } catch (e) {
-      Alert.alert('', translate('error.server'));
-    } finally {
-      setLoading(false);
-    }
+    updateUser({ id: user.user.id, name, imageUrl, accessToken: user.user.accessToken });
   };
 
   const renderLeftControl = useCallback(
@@ -120,13 +118,13 @@ const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.U
     [],
   );
 
-  if (!user.user || isLoading) {
+  if (user.isLoading || isLoading) {
     return <CustomLoading />;
   }
   return (
     <View flex style={styles.container}>
       <TopNavigation title={translate('updateAlbum.header')} leftControl={renderLeftControl()} darkBackground />
-      <KeyboardAwareScrollView contentContainerStyle={styles.mainContainer}>
+      <ScrollView contentContainerStyle={styles.mainContainer}>
         <View flex style={styles.headerContainer}>
           <TouchableOpacity style={styles.userImageContainer} onPress={onImagePress}>
             <Image
@@ -158,10 +156,10 @@ const UpdateProfile = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.U
             style={styles.buttonCreate}
             label={translate('common.save')}
             labelStyle={styles.buttonCreateLabel}
-            onPress={onSavePressAsync}
+            onPress={onSavePress}
           />
         </View>
-      </KeyboardAwareScrollView>
+      </ScrollView>
     </View>
   );
 };

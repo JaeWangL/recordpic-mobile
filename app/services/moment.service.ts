@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 import { apiEndpoints } from '@/configs';
-import { CreateMomentRequest, DeleteMomentRequest, MomentPreviewDto, PaginatedItemsViewModel } from '@/dtos';
+import {
+  CreateMomentRequest,
+  DeleteMomentRequest,
+  MomentPreviewDto,
+  PaginatedItemsViewModel,
+  UpdateMomentRequest,
+} from '@/dtos';
 import { translate } from '@/i18n';
 import { isAxiosError, LogUtil } from '@/utils';
 
@@ -32,6 +38,17 @@ export const deleteMomentAsync = async (request: DeleteMomentRequest, accessToke
   }
 
   return false;
+};
+
+export const updateMomentAsync = async (
+  request: UpdateMomentRequest,
+  accessToken: string,
+): Promise<MomentPreviewDto> => {
+  const res = await axios.put<MomentPreviewDto>(apiEndpoints.moments, request, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+  return res.data;
 };
 
 export const getMomentPreviewAsync = async (id: number, accessToken: string): Promise<MomentPreviewDto | undefined> => {

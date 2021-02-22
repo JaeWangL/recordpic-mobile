@@ -75,6 +75,13 @@ const MomentDetailScreen = (
     );
   }, []);
 
+  const onEditPres = useCallback((): void => {
+    navigation.navigate(APP_SCREEN.UPDATE_MOMENT, {
+      member,
+      currentMoment,
+    });
+  }, []);
+
   const renderMenuButton = useCallback(() => {
     return <Icon style={styles.dropdownMenu} name="more-vertical" size={24} onPress={onMenuPress} />;
   }, []);
@@ -93,7 +100,9 @@ const MomentDetailScreen = (
           <Text style={styles.nameLabel}>{currentMoment.name}</Text>
         </View>
         <Menu style={styles.dropdownMenu} ref={menuList} button={renderMenuButton()}>
-          <MenuItem textStyle={styles.dropdownLabel}>{translate('photos.editMoment')}</MenuItem>
+          <MenuItem textStyle={styles.dropdownLabel} onPress={onEditPres}>
+            {translate('photos.editMoment')}
+          </MenuItem>
           <MenuDivider />
           <MenuItem textStyle={styles.dropdownLabel} onPress={onDeletePresAsync}>
             {translate('photos.deleteMoment')}

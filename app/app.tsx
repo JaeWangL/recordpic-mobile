@@ -12,10 +12,22 @@ enableScreens();
 
 FastImage.preload([
   {
-    uri: 'https://facebook.github.io/react/img/logo_og.png',
+    uri: 'https://smartgeo.blob.core.windows.net/test/background1.png',
   },
   {
-    uri: 'https://facebook.github.io/react/img/logo_og.png',
+    uri: 'https://smartgeo.blob.core.windows.net/test/background2.png',
+  },
+  {
+    uri: 'https://smartgeo.blob.core.windows.net/test/background3.png',
+  },
+  {
+    uri: 'https://smartgeo.blob.core.windows.net/test/thumbnail1.png',
+  },
+  {
+    uri: 'https://smartgeo.blob.core.windows.net/test/thumbnail2.png',
+  },
+  {
+    uri: 'https://smartgeo.blob.core.windows.net/test/thumbnail3.png',
   },
 ]);
 

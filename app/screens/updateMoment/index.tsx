@@ -1,7 +1,6 @@
-/*
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import Moment from 'moment';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import IsEqual from 'react-fast-compare';
 import { Alert, Dimensions, FlatList, GestureResponderEvent, ListRenderItemInfo, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -10,10 +9,10 @@ import AddPhoto from '@/assets/icons/add-photo.svg';
 import ArrowDown from '@/assets/icons/arrow-down.svg';
 import { CustomLoading, Divider, ImageOverlay, TopNavigation, TopNavigationText } from '@/components';
 import { APP_SCREEN, RootStackParamList } from '@/configs';
-import { CreateMomentRequest, CreatePhotoWithMomentRequest } from '@/dtos';
+import { UpdateMomentRequest, UpdatePhotoType, UpdatePhotoWithMomentRequest } from '@/dtos';
 import { useUserStore } from '@/hooks';
 import { translate } from '@/i18n';
-import { createMomentAsync } from '@/services';
+import { getPhotosPreviewAsync, updateMomentAsync } from '@/services';
 import { photoListStyles } from '@/styles';
 import { getBGImage } from '@/utils';
 import CreatePhotoItem from './updatePhotoItem';
@@ -33,6 +32,41 @@ const UpdateMomentScreen = (
   const [showDate, setShowDate] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
 
+  useEffect(() => {
+    const initAsync = async () => {
+      if (!user.user) {
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const resP = await getPhotosPreviewAsync(currentMoment.id, user.user.accessToken);
+        setMParams({
+          name: currentMoment.name,
+          momentDate: Moment(currentMoment.momentDate).toDate(),
+        });
+        setPParams(
+          resP.map((p, index) => {
+            return {
+              index,
+              type: UpdatePhotoType.Update,
+              photoId: p.id,
+              photoUrl: p.photoUrl,
+              photoTitle: p.title,
+              photoDescription: p.description,
+            } as UpdatePhotoParamsType;
+          }),
+        );
+      } catch (e) {
+        Alert.alert('', translate('error.server'));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initAsync();
+  }, []);
+
   const handleParmsChange = (params: UpdatePhotoParamsType): void => {
     const newParams = Array.from(paramsP);
     newParams[params.index].photoUrl = params.photoUrl;
@@ -49,7 +83,7 @@ const UpdateMomentScreen = (
         return;
       }
 
-      const newParams = paramsP.filter((item) => item.index !== index);
+      const newParams = paramsP.map((p) => (p.index === index ? { ...p, type: UpdatePhotoType.Delete } : p));
       setPParams(newParams);
     };
 
@@ -102,23 +136,25 @@ const UpdateMomentScreen = (
 
     setLoading(true);
     try {
-      const photos: CreatePhotoWithMomentRequest[] = paramsP.map((p) => {
+      const photos: UpdatePhotoWithMomentRequest[] = paramsP.map((p) => {
         return {
+          type: p.type,
+          id: p.photoId,
           photoUrl: p.photoUrl,
           title: p.photoTitle,
           description: p.photoDescription,
-        } as CreatePhotoWithMomentRequest;
+        } as UpdatePhotoWithMomentRequest;
       });
-      const request: CreateMomentRequest = {
-        albumId: member.album.id,
+      const request: UpdateMomentRequest = {
+        id: currentMoment.id,
         name: paramsM.name,
         creatorMemberId: member.id,
         momentDate: paramsM.momentDate,
         photos,
       };
-      const res = await createMomentAsync(request, user.user.accessToken);
+      const res = await updateMomentAsync(request, user.user.accessToken);
       if (res) {
-        Alert.alert('', translate('common.createMomentMsg'));
+        Alert.alert('', translate('common.updateMomentMsg'));
         navigation.goBack();
       }
     } catch {
@@ -157,6 +193,7 @@ const UpdateMomentScreen = (
     }
 
     const newCard: UpdatePhotoParamsType = {
+      type: UpdatePhotoType.Create,
       index: paramsP.length,
     };
     const newParams = paramsP.concat(newCard);
@@ -248,4 +285,3 @@ const UpdateMomentScreen = (
 };
 
 export default React.memo(UpdateMomentScreen, IsEqual);
-*/

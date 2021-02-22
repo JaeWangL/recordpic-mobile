@@ -1,17 +1,13 @@
+import { UpdatePhotoType } from '@/dtos';
+
 export interface UpdateMomentParamsType {
   name?: string;
   momentDate: Date;
 }
 
 export interface UpdatePhotoParamsType {
+  type: UpdatePhotoType;
   index: number;
-
-  /// <summary>
-  /// 0: Added
-  /// 1: Deleted
-  /// 2: Updated
-  /// </summary>
-  type: number;
   photoId?: number;
   photoUrl?: string;
   photoTitle?: string;

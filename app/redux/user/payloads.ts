@@ -21,4 +21,26 @@ export interface SignOutPayload {
   clearStorage: boolean;
 }
 
-export type Payload = SignInPayload | SignInFailedPayload | SignInSuccessPayload | SignOutPayload;
+export interface UpdateUserPayload {
+  id: number;
+  name: string;
+  imageUrl?: string;
+  accessToken: string;
+}
+
+export interface UpdateUserFailedPayload {
+  errorMsg: string;
+}
+
+export interface UpdateUserSuccessPayload {
+  user: UserDto;
+}
+
+export type Payload =
+  | SignInPayload
+  | SignInFailedPayload
+  | SignInSuccessPayload
+  | SignOutPayload
+  | UpdateUserPayload
+  | UpdateUserFailedPayload
+  | UpdateUserSuccessPayload;

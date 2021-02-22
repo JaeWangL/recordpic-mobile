@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import IsEqual from 'react-fast-compare';
 import FastImage, { ImageStyle, OnLoadEvent } from 'react-native-fast-image';
 import * as ImagePicker from 'react-native-image-picker';
-import { Chip, TextField, View } from 'react-native-ui-lib';
+import { Chip, TextArea, TextField, View } from 'react-native-ui-lib';
 import Placeholder from '@/assets/images/placeholderPhoto.jpg';
 import { DeleteImageBlobRequest, UserDto } from '@/dtos';
 import { translate } from '@/i18n';
@@ -29,11 +29,7 @@ const UpdatePhotoItem = (props: IUpdatePhotoProps): React.ReactElement => {
   }, [calcImgHeight]);
 
   const onDeletePressAsync = async (): Promise<void> => {
-    if (params.index && user) {
-      const request: DeleteImageBlobRequest = {
-        fileName: getFilenamefromUrl(params.photoUrl),
-      };
-      await deleteImageBlobAsync(request, user.accessToken);
+    if (params.index) {
       handleDeletePhoto(params.index);
     }
   };
@@ -140,12 +136,10 @@ const UpdatePhotoItem = (props: IUpdatePhotoProps): React.ReactElement => {
         value={params.photoTitle}
         onChangeText={onTitleChange}
       />
-      <TextField
-        multiline
+      <TextArea
         style={photoParamsStyles.inputDescContainer}
         placeholder={translate('createMoment.placeholderPhotoDesc')}
         placeholderTextColor={placeholderGray200Color}
-        underlineColor="white"
         value={params.photoDescription}
         onChangeText={onDescChange}
       />

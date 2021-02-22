@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import IsEqual from 'react-fast-compare';
 import FastImage, { ImageStyle, OnLoadEvent } from 'react-native-fast-image';
 import * as ImagePicker from 'react-native-image-picker';
-import { Chip, TextField, View } from 'react-native-ui-lib';
+import { Chip, TextArea, TextField, View } from 'react-native-ui-lib';
 import Placeholder from '@/assets/images/placeholderPhoto.jpg';
 import { DeleteImageBlobRequest, UserDto } from '@/dtos';
 import { translate } from '@/i18n';
@@ -140,12 +140,10 @@ const CreatePhotoItem = (props: ICreatePhotoProps): React.ReactElement => {
         value={params.photoTitle}
         onChangeText={onTitleChange}
       />
-      <TextField
-        multiline
+      <TextArea
         style={photoParamsStyles.inputDescContainer}
         placeholder={translate('createMoment.placeholderPhotoDesc')}
         placeholderTextColor={placeholderGray200Color}
-        underlineColor="white"
         value={params.photoDescription}
         onChangeText={onDescChange}
       />

@@ -1,4 +1,12 @@
-import { SignInPayload, SignInFailedPayload, SignInSuccessPayload, SignOutPayload } from './payloads';
+import {
+  SignInPayload,
+  SignInFailedPayload,
+  SignInSuccessPayload,
+  SignOutPayload,
+  UpdateUserPayload,
+  UpdateUserFailedPayload,
+  UpdateUserSuccessPayload,
+} from './payloads';
 
 export enum ActionTypes {
   SIGN_IN = 'user/SIGN_IN',
@@ -6,6 +14,9 @@ export enum ActionTypes {
   SIGN_IN_SUCCESS = 'user/SIGN_IN_SUCCESS',
   SIGN_OUT = 'user/SIGN_OUT',
   SIGN_OUT_SUCCESS = 'user/SIGN_OUT_SUCCESS',
+  UPDATE_USER = 'user/UPDATE_USER',
+  UPDATE_USER_FAILED = 'user/UPDATE_USER_FAILED',
+  UPDATE_USER_SUCCESS = 'user/UPDATE_USER_SUCCESS',
 }
 
 export interface SignInAction {
@@ -13,7 +24,7 @@ export interface SignInAction {
   payload: SignInPayload;
 }
 
-export interface SignInSuccessFailed {
+export interface SignInFailedAction {
   type: typeof ActionTypes.SIGN_IN_FAILED;
   payload: SignInFailedPayload;
 }
@@ -33,12 +44,30 @@ export interface SignOutSuccessAction {
   payload?: undefined;
 }
 
+export interface UpdateUserAction {
+  type: typeof ActionTypes.UPDATE_USER;
+  payload: UpdateUserPayload;
+}
+
+export interface UpdateUserFailedAction {
+  type: typeof ActionTypes.UPDATE_USER_FAILED;
+  payload: UpdateUserFailedPayload;
+}
+
+export interface UpdateUserSuccessAction {
+  type: typeof ActionTypes.UPDATE_USER_SUCCESS;
+  payload: UpdateUserSuccessPayload;
+}
+
 export type UserAction =
   | SignInAction
-  | SignInSuccessFailed
+  | SignInFailedAction
   | SignInSuccessAction
   | SignOutAction
-  | SignOutSuccessAction;
+  | SignOutSuccessAction
+  | UpdateUserAction
+  | UpdateUserFailedAction
+  | UpdateUserSuccessAction;
 
 export const signIn = (payload: SignInPayload): UserAction => ({
   type: ActionTypes.SIGN_IN,
@@ -63,4 +92,19 @@ export const signOut = (payload: SignOutPayload): UserAction => ({
 export const signOutSuccess = (): UserAction => ({
   type: ActionTypes.SIGN_OUT_SUCCESS,
   payload: undefined,
+});
+
+export const updateUser = (payload: UpdateUserPayload): UserAction => ({
+  type: ActionTypes.UPDATE_USER,
+  payload,
+});
+
+export const updateUserFailed = (payload: UpdateUserFailedPayload): UserAction => ({
+  type: ActionTypes.UPDATE_USER_FAILED,
+  payload,
+});
+
+export const updateUserSuccess = (payload: UpdateUserSuccessPayload): UserAction => ({
+  type: ActionTypes.UPDATE_USER_SUCCESS,
+  payload,
 });

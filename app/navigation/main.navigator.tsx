@@ -12,6 +12,7 @@ import OnboardingScreen from '@/screens/onboarding';
 import PhotoDetailScreen from '@/screens/photoDetail';
 import SettingsScreen from '@/screens/settings';
 import UpdateAlbumScreen from '@/screens/updateAlbum';
+import UpdateMomentScreen from '@/screens/updateMoment';
 import UpdateProfileScreen from '@/screens/updateProfile';
 
 const Drawer = createDrawerNavigator();
@@ -36,6 +37,7 @@ const MainNavigator = (): React.ReactElement => {
       <Drawer.Screen name={APP_SCREEN.MOMENT_DETAIL} component={MomentDetailScreen} />
       <Drawer.Screen name={APP_SCREEN.PHOTO_DETAIL} component={PhotoDetailScreen} />
       <Drawer.Screen name={APP_SCREEN.UPDATE_ALBUM} component={UpdateAlbumScreen} />
+      <Drawer.Screen name={APP_SCREEN.UPDATE_MOMENT} component={UpdateMomentScreen} />
       <Drawer.Screen name={APP_SCREEN.SETTINGS} component={SettingsScreen} />
       <Drawer.Screen name={APP_SCREEN.UPDATE_PROFILE} component={UpdateProfileScreen} />
     </Drawer.Navigator>

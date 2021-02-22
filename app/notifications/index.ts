@@ -69,7 +69,6 @@ class PushNotifications {
     notification: NotificationWithData,
     completion: (response: NotificationCompletion) => void,
   ) => {
-    console.log(`Notification received in foreground: ${notification.title} : ${notification.body}`);
     // eslint-disable-next-line no-param-reassign
     notification.foreground = AppState.currentState === 'active';
     completion({ alert: false, sound: true, badge: true });

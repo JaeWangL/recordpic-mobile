@@ -1,6 +1,6 @@
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import Moment from 'moment';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import IsEqual from 'react-fast-compare';
 import { Alert, Dimensions, FlatList, GestureResponderEvent, ListRenderItemInfo, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -31,6 +31,13 @@ const CreateMomentScreen = (
   const [paramsP, setPParams] = useState<CreatePhotoParamsType[]>(initPParamsType);
   const [showDate, setShowDate] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    return () => {
+      setMParams(initMParamsType);
+      setPParams(initPParamsType);
+    };
+  }, []);
 
   const handleParmsChange = (params: CreatePhotoParamsType): void => {
     const newParams = Array.from(paramsP);
@@ -161,6 +168,8 @@ const CreateMomentScreen = (
     const newParams = paramsP.concat(newCard);
 
     setPParams(newParams);
+
+    console.log(newParams.length);
   };
 
   const renderLeftControl = useCallback(

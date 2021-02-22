@@ -34,7 +34,7 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
 
   const onFABPress = useCallback((): void => {
     navigation.navigate(APP_SCREEN.CREATE_MOMENT, { member });
-  }, []);
+  }, [member]);
 
   const onMenuPress = useCallback((): void => {
     navigation.openDrawer();

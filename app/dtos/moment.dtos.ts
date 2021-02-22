@@ -1,4 +1,4 @@
-import { CreatePhotoWithMomentRequest } from './photo.dtos';
+import { CreatePhotoWithMomentRequest, UpdatePhotoWithMomentRequest } from './photo.dtos';
 
 export interface MomentPreviewDto {
   id: number;
@@ -20,16 +20,10 @@ export interface DeleteMomentRequest {
   id: number;
 }
 
-export interface UpdatePhotoWithMomentRequest {
-  id?: number;
-  photoUrl: string;
-  title: string;
-  description: string;
-}
-
 export interface UpdateMomentRequest {
   id: number;
   name: string;
+  creatorMemberId: number;
   momentDate: Date;
   photos: UpdatePhotoWithMomentRequest[];
 }
