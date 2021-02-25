@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { nanumMyeongjoBold, notoSans } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,14 +9,14 @@ const styles = StyleSheet.create({
     marginTop: 0,
     textAlign: 'center',
     color: 'white',
-    fontFamily: 'NanumMyeongjoBold',
+    fontFamily: nanumMyeongjoBold,
     fontSize: 27,
   },
   descLabel: {
     marginTop: Platform.OS === 'android' ? -4 : 6,
     textAlign: 'center',
     color: 'rgba(255, 255, 255, 0.6)',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 15,
   },
   headerContainer: {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: 'white',
-    fontFamily: 'NanumMyeongjoBold',
+    fontFamily: nanumMyeongjoBold,
     fontSize: 20,
   },
   headerChip: {
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   },
   headerChipLabel: {
     color: 'white',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     paddingTop: 6,
     paddingBottom: 8,
   },

@@ -65,7 +65,7 @@ const UpdateMomentScreen = (
     };
 
     initAsync();
-  }, []);
+  }, [route]);
 
   const handleParmsChange = (params: UpdatePhotoParamsType): void => {
     const newParams = Array.from(paramsP);

@@ -8,6 +8,8 @@ export const apiEndpoints = {
   notifications: 'https://geotestingbackend.azurewebsites.net/notifications',
   photos: 'https://geotestingbackend.azurewebsites.net/photos',
 
+  comments: 'https://geotestingbackend.azurewebsites.net/comments',
+
   devices: 'https://geotestingbackend.azurewebsites.net/devices',
   upload: 'https://geotestingbackend.azurewebsites.net/upload',
 };

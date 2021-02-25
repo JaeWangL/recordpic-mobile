@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { nanumMyeongjoBold, notoSans, notoSansLight } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,15 +8,15 @@ const styles = StyleSheet.create({
   userImage: {
     marginTop: 16,
     alignSelf: 'center',
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     borderRadius: 100 / 2,
   },
   userName: {
     marginTop: 16,
     textAlign: 'center',
     color: 'white',
-    fontFamily: 'NanumMyeongjoBold',
+    fontFamily: nanumMyeongjoBold,
     fontSize: 26,
     fontWeight: '600',
   },
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'android' ? 0 : 4,
     textAlign: 'center',
     color: 'rgba(255, 255, 255, 0.5)',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 14,
     fontWeight: '200',
   },
@@ -54,10 +55,10 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   buttonLabel: {
-    marginTop: 4,
-    marginBottom: Platform.OS === 'android' ? 8 : 3,
+    marginTop: Platform.OS === 'android' ? -4 : 4,
+    marginBottom: Platform.OS === 'android' ? 0 : 3,
     color: 'white',
-    fontFamily: 'Noto Sans KR Light',
+    fontFamily: notoSansLight,
     fontSize: 14,
     fontWeight: '400',
   },

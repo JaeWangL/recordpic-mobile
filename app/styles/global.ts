@@ -85,9 +85,9 @@ export const photoParamsStyles = StyleSheet.create({
   },
   inputDescContainer: {
     minHeight: Platform.OS === 'android' ? 40 : 56,
-    marginTop: Platform.OS === 'android' ? -40 : -32,
+    marginTop: Platform.OS === 'android' ? -48 : -32,
     marginBottom: 42,
-    marginHorizontal: '15%',
+    marginHorizontal: '14%',
     backgroundColor: 'white',
     fontFamily: 'Noto Sans KR',
     fontSize: 15,

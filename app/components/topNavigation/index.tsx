@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { StatusBar, TextStyle, Platform, ViewStyle } from 'react-native';
+import { TextStyle, Platform, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Text, View, ViewProps } from 'react-native-ui-lib';
 import { isValidString } from '@/utils';
@@ -18,7 +18,7 @@ const TopNavigation = (props: TopNavigationProps): React.ReactElement => {
 
   const getSafeTopStyle = useCallback((): ViewStyle => {
     return {
-      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : insects.top,
+      paddingTop: Platform.OS === 'android' ? 12 : insects.top,
       paddingBottom: 12,
     };
   }, []);

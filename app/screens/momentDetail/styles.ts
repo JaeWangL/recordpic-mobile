@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { gray300Color } from '@/styles';
+import { gray300Color, nanumMyeongjo, nanumMyeongjoBold, notoSans } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     textAlign: 'center',
     color: gray300Color,
-    fontFamily: 'NanumMyeongjo',
+    fontFamily: nanumMyeongjo,
     fontSize: 14,
   },
   nameLabel: {
     marginTop: Platform.OS === 'android' ? 0 : 2,
     marginBottom: 20,
     textAlign: 'center',
-    fontFamily: 'NanumMyeongjoBold',
+    fontFamily: nanumMyeongjoBold,
     fontSize: 20,
   },
   dropdownMenu: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   dropdownLabel: {
     color: '#555555',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 12,
   },
   listContainer: {

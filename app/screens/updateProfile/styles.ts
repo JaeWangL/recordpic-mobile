@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { baseBlackColor } from '@/styles';
+import { baseBlackColor, nanumMyeongjo, notoSans } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,17 +23,11 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 100 / 2,
   },
-  headerText: {
-    alignSelf: 'center',
-    color: 'white',
-    fontFamily: 'NanumMyeongjo',
-    fontSize: 23,
-  },
   inputNameContainer: {
     marginTop: 12,
     color: 'white',
     backgroundColor: 'transparent',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 19,
     fontWeight: '400',
     textAlign: 'center',
@@ -41,7 +35,7 @@ const styles = StyleSheet.create({
   },
   signout: {
     color: 'rgba(255, 255, 255, 0.6)',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 16,
     fontWeight: '400',
     textDecorationLine: 'underline',
@@ -62,7 +56,7 @@ const styles = StyleSheet.create({
   buttonBackLabel: {
     marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'white',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 18,
     fontWeight: '400',
     letterSpacing: -0.1,
@@ -76,7 +70,7 @@ const styles = StyleSheet.create({
   buttonCreateLabel: {
     marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'black',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 18,
     fontWeight: '400',
     letterSpacing: -0.1,

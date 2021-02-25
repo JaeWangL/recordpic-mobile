@@ -1,4 +1,5 @@
 export * from './album.service';
+export * from './comment.service';
 export * from './device.service';
 export * from './identity.service';
 export * from './member.service';

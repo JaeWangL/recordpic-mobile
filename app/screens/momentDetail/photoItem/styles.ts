@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { placeholderGray200Color } from '@/styles';
+import { nanumMyeongjoBold, notoSans, placeholderGray200Color } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginBottom: Platform.OS === 'android' ? -2 : 6,
     marginHorizontal: '15%',
-    fontFamily: 'NanumMyeongjoBold',
+    fontFamily: nanumMyeongjoBold,
     fontSize: 20,
   },
   descLabel: {
     marginHorizontal: '15%',
     color: placeholderGray200Color,
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 15,
     marginBottom: 36,
   },

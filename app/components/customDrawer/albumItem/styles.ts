@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { blackTransparent50Color } from '@/styles';
+import { blackTransparent50Color, nanumMyeongjo, nanumMyeongjoExtraBold, notoSans } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 34,
     color: 'white',
-    fontFamily: 'NanumMyeongjoExtraBold',
+    fontFamily: nanumMyeongjoExtraBold,
     fontSize: 20,
   },
   descLabel: {
     alignSelf: 'center',
     marginTop: Platform.OS === 'android' ? -6 : 0,
     color: 'rgba(255, 255, 255, 0.7)',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 13,
   },
   albumImage: {
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 12,
     color: 'rgba(255, 255, 255, 0.8)',
-    fontFamily: 'NanumMyeongjo',
+    fontFamily: nanumMyeongjo,
     fontSize: 13,
   },
   createContainer: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   createTitle: {
-    fontFamily: 'NanumMyeongjo',
+    fontFamily: nanumMyeongjo,
     color: 'white',
     fontSize: 19,
   },

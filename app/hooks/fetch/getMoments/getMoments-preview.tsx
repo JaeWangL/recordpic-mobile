@@ -1,3 +1,4 @@
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { MomentPreviewDto, UserDto } from '@/dtos';
@@ -11,6 +12,7 @@ interface MomentsPreviewState {
 }
 
 export const useMomentsPreviewFetch = (
+  navigation: DrawerNavigationProp<any, any>,
   albumId: number,
   user?: UserDto,
   pageIndex = 0,
@@ -42,8 +44,12 @@ export const useMomentsPreviewFetch = (
       }
     };
 
-    initAsync();
-  }, [albumId]);
+    const unsubscribe = navigation.addListener('focus', () => {
+      initAsync();
+    });
+
+    return unsubscribe;
+  }, [navigation, albumId]);
 
   return { moments, isLoading };
 };

@@ -2295,9 +2295,9 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
 bower-auto-release@^1.1.357:
-  version "1.1.357"
-  resolved "https://registry.yarnpkg.com/bower-auto-release/-/bower-auto-release-1.1.357.tgz#98c60f612fade659df517b080cdc6480b1a5353a"
-  integrity sha512-mVg1hEgznOpSmFTneFXjG4yGEPQMwchbux8TQIadfUUWCjPjISmXb2Ka23ZzJPJLj23ogBe5KuNNUd20vjlnfg==
+  version "1.1.358"
+  resolved "https://registry.yarnpkg.com/bower-auto-release/-/bower-auto-release-1.1.358.tgz#578f8ce3dc2f62f0b54380814266ff8717775bc1"
+  integrity sha512-uWpR29K93+Ue3UJJPiVH9Q3L5+kpAQN7LlB8zdQe0unvVn4sTIIzrdSYkuIml55TEvSFewtov6OB3jmpAY4jsQ==
   dependencies:
     bower "^1.7.9"
     command-line-args "^3.0.0"
@@ -5618,7 +5618,12 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
-lodash@^4.0.0, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.3.0:
+lodash@^4.0.0:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
+lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.3.0:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -7433,10 +7438,10 @@ react-native-text-size@4.0.0-rc.1:
   resolved "https://registry.yarnpkg.com/react-native-text-size/-/react-native-text-size-4.0.0-rc.1.tgz#1e048d345dd6a5a8e1269e0585c1a5948c478da5"
   integrity sha512-CysqjU2jK6Yc+a+kEI222pUyTY2ywcU2HqbFqf1KHymW6OPTdvBBHqbEJKL0QiLhQaFYDbqicM+h990s9TP00g==
 
-react-native-ui-lib@^5.19.1:
-  version "5.19.1"
-  resolved "https://registry.yarnpkg.com/react-native-ui-lib/-/react-native-ui-lib-5.19.1.tgz#daba42d98a894a11c925be6506554a550c60575f"
-  integrity sha512-xagQgZARqsx/+FEfbGFi9DzjEdwft+GSAMdZDnNvWw7mYS1Yy76e50Cmcej7XqOiq7Ayn7fyBp0PLF6Y9PdUfw==
+react-native-ui-lib@^5.20.3:
+  version "5.20.3"
+  resolved "https://registry.yarnpkg.com/react-native-ui-lib/-/react-native-ui-lib-5.20.3.tgz#d51db2f927183ca9c0940b05c4648b2334668880"
+  integrity sha512-Ed+GkJOyddIJPUIU6UXahbo7XErWfFQ1NQPFpi9YhfkPPIYzWEcyxF/0ggAMo2jxGtqPHHPQroxrJAmjrJYalg==
   dependencies:
     babel-plugin-transform-inline-environment-variables "^0.0.2"
     color "^3.1.0"
@@ -8980,9 +8985,9 @@ urix@^0.1.0:
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
 
 url-parse@^1.2.0:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
+  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"

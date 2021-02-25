@@ -1,5 +1,6 @@
 export * from './album.dtos';
 export * from './auth.dtos';
+export * from './comment.dtos';
 export * from './common.dtos';
 export * from './device.dtos';
 export * from './member.dtos';

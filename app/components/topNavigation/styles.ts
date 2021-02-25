@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { nanumMyeongjoExtraBold } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,16 +15,14 @@ const styles = StyleSheet.create({
   },
   titleLabel: {
     color: 'white',
-    fontFamily: 'NanumMyeongjoExtraBold',
+    fontFamily: nanumMyeongjoExtraBold,
     fontSize: 20,
-    fontWeight: '700',
-    paddingBottom: 12,
+    paddingBottom: Platform.OS === 'android' ? 0 : 12,
   },
   titleDarkLabel: {
     color: 'white',
-    fontFamily: 'NanumMyeongjoExtraBold',
+    fontFamily: nanumMyeongjoExtraBold,
     fontSize: 20,
-    fontWeight: '700',
   },
   subtitleLabel: {
     color: 'white',
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   spacing: {
-    width: 48,
+    width: Platform.OS === 'android' ? 76 : 48,
   },
 });
 

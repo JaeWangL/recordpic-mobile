@@ -21,7 +21,7 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
   const { member } = route.params;
   const { moment, changeCurrentMoment } = useMomentStore();
   const { user } = useUserStore();
-  const { moments, isLoading } = useMomentsPreviewFetch(member.album.id, user.user);
+  const { moments, isLoading } = useMomentsPreviewFetch(navigation, member.album.id, user.user);
   const momentsList = useRef<FlatList>(null);
 
   const handleMomentPress = (index: number, item: MomentPreviewDto): void => {
@@ -58,9 +58,9 @@ const MomentsScreen = (props: DrawerScreenProps<RootStackParamList, APP_SCREEN.M
     [],
   );
 
-  const renderFABIcon = (): React.ReactElement => {
+  const renderFABIcon = useCallback((): React.ReactElement => {
     return <Edit3 />;
-  };
+  }, []);
 
   const renderHeader = useCallback((): React.ReactElement => {
     return (

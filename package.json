@@ -62,7 +62,7 @@
     "react-native-screens": "^2.16.1",
     "react-native-snap-carousel": "4.0.0-beta.6",
     "react-native-svg": "^12.1.0",
-    "react-native-ui-lib": "^5.19.1",
+    "react-native-ui-lib": "^5.20.3",
     "react-native-vector-icons": "^7.1.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",

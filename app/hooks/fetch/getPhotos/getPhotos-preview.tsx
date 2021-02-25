@@ -1,3 +1,4 @@
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { PhotoPreviewDto, UserDto } from '@/dtos';
@@ -10,7 +11,12 @@ interface PhotosPreviewState {
   isLoading: boolean;
 }
 
-export const usePhotosPreviewFetch = (momentId: number, user?: UserDto, skip = false): PhotosPreviewState => {
+export const usePhotosPreviewFetch = (
+  navigation: DrawerNavigationProp<any, any>,
+  momentId: number,
+  user?: UserDto,
+  skip = false,
+): PhotosPreviewState => {
   const [photos, setPhotos] = useState<PhotoPreviewDto[]>([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -36,8 +42,12 @@ export const usePhotosPreviewFetch = (momentId: number, user?: UserDto, skip = f
       }
     };
 
-    initAsync();
-  }, [momentId]);
+    const unsubscribe = navigation.addListener('focus', () => {
+      initAsync();
+    });
+
+    return unsubscribe;
+  }, [navigation, momentId]);
 
   return { photos, isLoading };
 };

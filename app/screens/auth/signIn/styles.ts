@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { nanumMyeongjo, notoSans } from '@/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: 'white',
-    fontFamily: 'NanumMyeongjo',
+    fontFamily: nanumMyeongjo,
     fontSize: 23,
   },
   googleContainer: {
@@ -31,9 +32,8 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     marginVertical: Platform.OS === 'android' ? 2 : 14,
     color: 'black',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 18,
-    fontWeight: '400',
     letterSpacing: -0.1,
   },
 });

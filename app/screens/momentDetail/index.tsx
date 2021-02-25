@@ -26,7 +26,7 @@ const MomentDetailScreen = (
   const { member, currentMoment } = route.params;
   const { changeCurrentPhoto } = useMomentStore();
   const { user } = useUserStore();
-  const { photos, isLoading } = usePhotosPreviewFetch(currentMoment.id, user.user);
+  const { photos, isLoading } = usePhotosPreviewFetch(navigation, currentMoment.id, user.user);
   const menuList = useRef<Menu>(null);
   const photosList = useRef<FlatList>(null);
 
@@ -73,14 +73,14 @@ const MomentDetailScreen = (
       ],
       { cancelable: false },
     );
-  }, []);
+  }, [route]);
 
   const onEditPres = useCallback((): void => {
     navigation.navigate(APP_SCREEN.UPDATE_MOMENT, {
       member,
       currentMoment,
     });
-  }, []);
+  }, [route]);
 
   const renderMenuButton = useCallback(() => {
     return <Icon style={styles.dropdownMenu} name="more-vertical" size={24} onPress={onMenuPress} />;
@@ -110,7 +110,20 @@ const MomentDetailScreen = (
         </Menu>
       </View>
     );
+  }, [route]);
+
+  /*
+  const renderFooterList = useCallback((): React.ReactElement => {
+    return (
+      <FlatList
+        style={comments.comments.length !== 0 ? styles.commentsContainerP : styles.commentsContainer}
+        data={comments.comments}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={renderCommentItem}
+      />
+    );
   }, []);
+  */
 
   const renderPhotoItem = (info: ListRenderItemInfo<PhotoPreviewDto>): React.ReactElement => {
     return (
@@ -135,6 +148,7 @@ const MomentDetailScreen = (
         data={photos}
         keyExtractor={keyExtractor}
         ListHeaderComponent={renderListHeader}
+        // ListFooterComponent={renderFooterList}
         renderItem={renderPhotoItem}
         initialNumToRender={7}
         maxToRenderPerBatch={5}

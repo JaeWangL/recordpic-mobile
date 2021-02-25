@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { gray300Color } from '@/styles';
+import { gray300Color, notoSans, notoSansBold } from '@/styles';
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -13,22 +13,21 @@ const styles = StyleSheet.create({
   modalTitle: {
     paddingTop: 36,
     textAlign: 'center',
-    fontFamily: 'Noto Sans KR Bold',
+    fontFamily: notoSansBold,
     fontSize: 18,
   },
   modalDesc: {
     textAlign: 'center',
     color: gray300Color,
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 15,
   },
   inputCodeContainer: {
     marginTop: 0,
     paddingBottom: Platform.OS === 'android' ? 0 : 16,
     backgroundColor: 'transparent',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 18,
-    fontWeight: '400',
     textAlign: 'center',
     height: 50,
   },
@@ -40,9 +39,8 @@ const styles = StyleSheet.create({
   buttonJoinLabel: {
     marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'white',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 17,
-    fontWeight: '400',
     letterSpacing: -0.1,
   },
   buttonCreate: {
@@ -55,16 +53,15 @@ const styles = StyleSheet.create({
   buttonCreateLabel: {
     marginVertical: Platform.OS === 'android' ? 4 : 8,
     color: 'black',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 17,
-    fontWeight: '400',
     letterSpacing: -0.1,
   },
   closeLabel: {
     marginVertical: Platform.OS === 'android' ? 12 : 18,
     textAlign: 'center',
     textDecorationLine: 'underline',
-    fontFamily: 'Noto Sans KR',
+    fontFamily: notoSans,
     fontSize: 16,
     color: '#999999',
   },
